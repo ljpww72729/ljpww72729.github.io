@@ -52,3 +52,7 @@ defaults:
       type: "posts"
     values:
       comments: true
+
+#设置toc显示的级别,不建议添加1号显示级别
+kramdown:
+  toc_levels: 2..3
