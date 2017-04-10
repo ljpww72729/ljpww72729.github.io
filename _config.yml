@@ -24,12 +24,23 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ljpww72729
 github_username:  ljpww72729
 
+
 # Build settings
 markdown: kramdown
-theme: minima
+#theme: minima
+#theme: jekyll-theme-cayman
 gems:
   - jekyll-feed
+  - jekyll-sitemap
+#  - jekyll-seo-tag
+  - jemoji
+  - jekyll-paginate
 exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+
+paginate:     10
+author:
+  name:       ljpww72729
+  url:        http://ljpww72729.github.io
