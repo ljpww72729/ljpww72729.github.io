@@ -20,8 +20,83 @@ You’ll find this post in your `_posts` directory. Go ahead and edit it and re-
 
 To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
 
-显示图片：
-![显示图片](/images/201704/logo.jpg)
+显示图片：  
+[![显示图片](/images/201704/logo.jpg "image description")  
+*My caption*][personal blog]
+
+显示视频：  
+<!-- blank line -->
+<figure class="video_container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7V-fIGMDsmE" frameborder="0" allowfullscreen></iframe>
+</figure>
+<!-- blank line -->
+
+显示本地视频：  
+<!-- blank line -->
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true" poster="/images/201704/logo.jpg">
+    <source src="/images/201704/movie.mp4" type="video/mp4">
+    <!--
+    <source src="path/to/video.ogg" type="video/ogg">
+    <source src="path/to/video.webm" type="video/webm">
+    -->
+  </video>
+</figure>
+<!-- blank line -->
+
+显示表格：  
+| Default aligned | Left aligned | Center aligned  | Right aligned  |
+|-----------------|:-------------|:---------------:|---------------:|
+| First body part | Second cell  | Third cell      | fourth cell    |
+| Second line     | foo          | **strong**      | baz            |
+| Third line      | quux         | baz             | bar            |
+|-----------------+--------------+-----------------+----------------|
+| Second body     |              |                 |                |
+| 2nd line        |              |                 |                |
+|-----------------+--------------+-----------------+----------------|
+| Third body      |              |                 | Foo            |
+
+> This is a blockquote.
+>     On multiple lines.
+That may be lazy.
+>
+> This is the second paragraph.
+
+----
+
+> This is a paragraph.
+>
+> > A nested blockquote.
+>
+> ### Headers work
+>
+> * lists too
+>
+> and all other block-level **elements**.
+>
+> Even code blocks:
+>
+>      def hello
+>        puts "Hello world!"
+>      end
+> {: .language-ruby}
+
+This is a regular paragraph.
+
+**Note:** a note is something that needs to be mentioned but is apart from the context.
+{: .note}
+
+
+注释：  
+This is a paragraph
+{::comment}
+This is a comment which is
+completely ignored.
+{:/comment}
+... paragraph continues here.
+
+My danger paragraph.
+{: .alert .alert-danger}
 
 Jekyll also offers powerful support for code snippets:
 
@@ -38,5 +113,6 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
+[personal blog]: http://ljpww72729.github.com
 
 I give this plugin two :+1:!  :smirk:
