@@ -43,3 +43,12 @@ paginate:     10
 author:
   name:       ljpww72729
   url:        http://ljpww72729.github.io
+
+# Default YAML frontmatter settings
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: true
