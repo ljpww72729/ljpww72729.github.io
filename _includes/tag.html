@@ -1,0 +1,14 @@
+{% if post %}
+{% for tag in post.tags %}
+<span  class="codinfox-tag-mark" >
+  <a href="{{ root_url }}/{{ site.tag_dir }}#{{ tag }}" title="Tag: {{ tag }}" rel="tag">{{ tag }}</a>
+</span>{% unless forloop.last %}&nbsp;{% endunless %}
+{% endfor %}
+{% else %}
+{% for tag in page.tags %}
+<!--a href="{{ root_url }}/{{ site.tag_dir }}#{{ tag | cgi_escape }}" title="Tag: {{ tag }}" rel="tag">{{ tag | join: "/" }}</a-->
+<span  class="codinfox-tag-mark" >
+  <a href="{{ root_url }}/{{ site.tag_dir }}#{{ tag }}" title="Tag: {{ tag }}" rel="tag">{{ tag }}</a>
+</span>{% unless forloop.last %}&nbsp;{% endunless %}
+{% endfor %}
+{% endif %}

@@ -9,14 +9,14 @@ ruby RUBY_VERSION
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "3.4.3"
+# gem "jekyll", "3.4.3"
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem "minima", "~> 2.0"
+# gem "minima", "~> 2.0"
 
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
-# gem "github-pages", group: :jekyll_plugins
+gem "github-pages", group: :jekyll_plugins
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
@@ -28,3 +28,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 source 'https://rubygems.org'
 gem 'github-pages', group: :jekyll_plugins
+
+#快速创建博客插件 https://github.com/jekyll/jekyll-compose
+gem 'jekyll-compose', group: [:jekyll_plugins]
+
+#后台管理插件 https://github.com/jekyll/jekyll-admin
+gem 'jekyll-admin', group: :jekyll_plugins

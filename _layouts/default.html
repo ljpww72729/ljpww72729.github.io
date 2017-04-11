@@ -13,7 +13,7 @@
       <div id="disqus_thread"></div>
       <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = 'ljpww72729';
+        var disqus_shortname = '{{ site.disqus_name }}';
         {% unless page.gamla_disqus_satte %}    
         var disqus_identifier = '{{ page.id | escape }}';
         var disqus_title = '{{ page.title | escape }}';
@@ -28,6 +28,7 @@
       </script>
       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
       {% endif %}
+
       {% include page-footer.html %}
 
     </section>

@@ -2,11 +2,27 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2017-04-09 17:32:27 +0800
-categories: jekyll update
+categories:
+  - tutorials
+tags:
+ - jekyll
+ - test
 ---
 
+{::comment}
+这里显示的是摘要信息也是概要信息
+{:/comment}
 
-## Contents
+You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+
+To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+
+<!-- more -->
+
+显示图片：  
+[![显示图片](/assets/blog/images/201704/logo.jpg "image description")*My caption*][personal blog]
+
+## Content
 {:.no_toc}
 
 * Will be replaced with the ToC, excluding the "Contents" header
@@ -16,35 +32,20 @@ categories: jekyll update
 ### 标题1.1
 #### 标题1.1.1
 
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
-
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-显示图片：  
-[![显示图片](/images/201704/logo.jpg "image description")  
-*My caption*][personal blog]
-
 显示视频：  
-<!-- blank line -->
 <figure class="video_container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7V-fIGMDsmE" frameborder="0" allowfullscreen></iframe>
 </figure>
-<!-- blank line -->
 
 显示本地视频：  
-<!-- blank line -->
 <figure class="video_container">
-  <video controls="true" allowfullscreen="true" poster="/images/201704/logo.jpg">
-    <source src="/images/201704/movie.mp4" type="video/mp4">
-    <!--
-    <source src="path/to/video.ogg" type="video/ogg">
-    <source src="path/to/video.webm" type="video/webm">
-    -->
+  <video controls="true" allowfullscreen="true" poster="/assets/blog/images/201704/logo.jpg">
+    <source src="/assets/blog/images/201704/movie.mp4" type="video/mp4">
   </video>
 </figure>
-<!-- blank line -->
 
 显示表格：  
+
 | Default aligned | Left aligned | Center aligned  | Right aligned  |
 |-----------------|:-------------|:---------------:|---------------:|
 | First body part | Second cell  | Third cell      | fourth cell    |
@@ -69,6 +70,7 @@ That may be lazy.
 > > A nested blockquote.
 >
 > ### Headers work
+> {:.no_toc}
 >
 > * lists too
 >

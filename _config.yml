@@ -39,7 +39,7 @@ exclude:
   - Gemfile.lock
   - vendor
 
-paginate:     10
+paginate: 10
 author:
   name:       ljpww72729
   url:        http://ljpww72729.github.io
@@ -52,7 +52,19 @@ defaults:
       type: "posts"
     values:
       comments: true
+      author: "李朋"
 
 #设置toc显示的级别,不建议添加1号显示级别
 kramdown:
   toc_levels: 2..3
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: none
+
+category_dir: category/
+tag_dir: tag/
+
+excerpt_separator:  '<!-- more -->'
+ga_ua: UA-96911884-1
+disqus_name: ljpww72729
