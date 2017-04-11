@@ -19,8 +19,6 @@ To add new posts, simply add a file in the `_posts` directory that follows the c
 
 <!-- more -->
 
-显示图片：  
-[![显示图片](/assets/blog/images/201704/logo.jpg "image description")*My caption*][personal blog]
 
 ## Content
 {:.no_toc}
@@ -28,23 +26,50 @@ To add new posts, simply add a file in the `_posts` directory that follows the c
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-## 标题1
-### 标题1.1
-#### 标题1.1.1
+## 示例
+### 显示图片：  
+```
+[![显示图片](/assets/blog/images/201704/logo.jpg "image description")*My caption*][personal blog]
+```
+[![显示图片](/assets/blog/images/201704/logo.jpg "image description")*My caption*][personal blog]
 
-显示视频：  
+### 显示视频：  
+```
+<figure class="video_container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7V-fIGMDsmE" frameborder="0" allowfullscreen></iframe>
+</figure>
+```
 <figure class="video_container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7V-fIGMDsmE" frameborder="0" allowfullscreen></iframe>
 </figure>
 
-显示本地视频：  
+### 显示本地视频：  
+```
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true" poster="/assets/blog/images/201704/logo.jpg">
+    <source src="/assets/blog/images/201704/movie.mp4" type="video/mp4">
+  </video>
+</figure>
+```
 <figure class="video_container">
   <video controls="true" allowfullscreen="true" poster="/assets/blog/images/201704/logo.jpg">
     <source src="/assets/blog/images/201704/movie.mp4" type="video/mp4">
   </video>
 </figure>
 
-显示表格：  
+### 显示表格：  
+```
+| Default aligned | Left aligned | Center aligned  | Right aligned  |
+|-----------------|:-------------|:---------------:|---------------:|
+| First body part | Second cell  | Third cell      | fourth cell    |
+| Second line     | foo          | **strong**      | baz            |
+| Third line      | quux         | baz             | bar            |
+|-----------------+--------------+-----------------+----------------|
+| Second body     |              |                 |                |
+| 2nd line        |              |                 |                |
+|-----------------+--------------+-----------------+----------------|
+| Third body      |              |                 | Foo            |
+```
 
 | Default aligned | Left aligned | Center aligned  | Right aligned  |
 |-----------------|:-------------|:---------------:|---------------:|
@@ -56,6 +81,35 @@ To add new posts, simply add a file in the `_posts` directory that follows the c
 | 2nd line        |              |                 |                |
 |-----------------+--------------+-----------------+----------------|
 | Third body      |              |                 | Foo            |
+
+### 显示blockquote  
+```
+> This is a blockquote.
+>     On multiple lines.
+That may be lazy.
+>
+> This is the second paragraph.
+
+----
+
+> This is a paragraph.
+>
+> > A nested blockquote.
+>
+> ### Headers work
+> {:.no_toc}
+>
+> * lists too
+>
+> and all other block-level **elements**.
+>
+> Even code blocks:
+>
+>      def hello
+>        puts "Hello world!"
+>      end
+> {: .language-ruby}
+```
 
 > This is a blockquote.
 >     On multiple lines.
@@ -83,26 +137,30 @@ That may be lazy.
 >      end
 > {: .language-ruby}
 
-This is a regular paragraph.
-
+### 显示一个Note
 **Note:** a note is something that needs to be mentioned but is apart from the context.
-{: .note}
 
 
-注释：  
+### 添加注释：  
+```
 This is a paragraph
 {::comment}
-This is a comment which is
-completely ignored.
+This is a comment which is completely ignored.
+{:/comment}
+... paragraph continues here.
+```
+This is a paragraph
+{::comment}
+This is a comment which is completely ignored.
 {:/comment}
 ... paragraph continues here.
 
 My danger paragraph.
-{: .alert .alert-danger}
+{:.alert .alert-danger}
 
 Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
+### 代码片段显示行号，但是这也太不和谐了吧。。。
+{% highlight ruby linenos %}
 def print_hi(name)
   puts "Hi, #{name}"
 end

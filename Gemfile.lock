@@ -228,13 +228,10 @@ DEPENDENCIES
   github-pages
   jekyll-admin
   jekyll-compose
-  jekyll-feed (~> 0.6)
+  jekyll-feed
   jekyll-github-metadata
   jekyll-theme-cayman!
   netrc
-
-RUBY VERSION
-   ruby 2.4.1p111
 
 BUNDLED WITH
    1.14.6
