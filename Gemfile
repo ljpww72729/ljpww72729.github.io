@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 ruby RUBY_VERSION
 
+gemspec
+
 # Hello! This is where you manage which Jekyll version is used to run.
 # When you want to use a different version, change it below, save the
 # file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
@@ -20,17 +22,14 @@ gem "github-pages", group: :jekyll_plugins
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-   gem "jekyll-feed", "~> 0.6"
+  gem "jekyll-feed", "~> 0.6"
+  # 快速创建博客插件 https://github.com/jekyll/jekyll-compose
+  gem 'jekyll-compose'
+  #  https://github.com/jekyll/jekyll-admin
+  gem 'jekyll-admin'
+  gem 'jekyll-github-metadata'
+  gem 'netrc'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-source 'https://rubygems.org'
-gem 'github-pages', group: :jekyll_plugins
-
-#快速创建博客插件 https://github.com/jekyll/jekyll-compose
-gem 'jekyll-compose', group: [:jekyll_plugins]
-
-#后台管理插件 https://github.com/jekyll/jekyll-admin
-gem 'jekyll-admin', group: :jekyll_plugins
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

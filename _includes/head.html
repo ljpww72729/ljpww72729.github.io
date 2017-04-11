@@ -1,12 +1,12 @@
 <head>
   <meta charset="UTF-8">
-  <title>{{ site.title }}</title>
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description | default: site.github.project_tagline }}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#157878">
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/normalize.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="{{ site.baseurl }}/assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/cayman.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/codinfox.css">
-   <script src="{{ site.baseurl }}/assets/js/pageContent.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="{{ '{{ site.baseurl }}/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  <script src="{{ site.url }}/assets/js/pageContent.js" charset="utf-8"></script>
 </head>

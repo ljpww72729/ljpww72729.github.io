@@ -32,6 +32,8 @@
       {% include page-footer.html %}
 
     </section>
+        {% if site.ga_ua %}
     {% include analytics.html %}
+        {% endif %}
   </body>
 </html>

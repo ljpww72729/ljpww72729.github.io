@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    jekyll-theme-cayman (0.0.4)
+      jekyll (~> 3.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -128,8 +134,6 @@ GEM
     jekyll-swiss (0.4.0)
     jekyll-theme-architect (0.0.4)
       jekyll (~> 3.3)
-    jekyll-theme-cayman (0.0.4)
-      jekyll (~> 3.3)
     jekyll-theme-dinky (0.0.4)
       jekyll (~> 3.3)
     jekyll-theme-hacker (0.0.4)
@@ -174,6 +178,7 @@ GEM
     multi_json (1.12.1)
     multipart-post (2.0.0)
     net-dns (0.8.0)
+    netrc (0.11.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
     octokit (4.7.0)
@@ -224,7 +229,9 @@ DEPENDENCIES
   jekyll-admin
   jekyll-compose
   jekyll-feed (~> 0.6)
-  tzinfo-data
+  jekyll-github-metadata
+  jekyll-theme-cayman!
+  netrc
 
 RUBY VERSION
    ruby 2.4.1p111
