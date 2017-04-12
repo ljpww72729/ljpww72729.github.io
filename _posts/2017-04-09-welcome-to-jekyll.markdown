@@ -6,16 +6,13 @@ categories:
   - tutorials
 tags:
  - jekyll
- - test
 ---
 
 {::comment}
 这里显示的是摘要信息也是概要信息
 {:/comment}
 
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
-
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+Jekyll kramdown 语法示例
 
 <!-- more -->
 
@@ -140,7 +137,6 @@ That may be lazy.
 ### 显示一个Note
 **Note:** a note is something that needs to be mentioned but is apart from the context.
 
-
 ### 添加注释：  
 ```
 This is a paragraph
@@ -155,11 +151,7 @@ This is a comment which is completely ignored.
 {:/comment}
 ... paragraph continues here.
 
-My danger paragraph.
-{:.alert .alert-danger}
-
-Jekyll also offers powerful support for code snippets:
-### 代码片段显示行号，但是这也太不和谐了吧。。。
+### 代码片段显示行号（好不和谐）
 {% highlight ruby linenos %}
 def print_hi(name)
   puts "Hi, #{name}"
@@ -168,11 +160,10 @@ print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+### emoji表情
+参考网址：[emoji表情](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+
 [personal blog]: http://ljpww72729.github.com
 
 I give this plugin two :+1:!  :smirk:

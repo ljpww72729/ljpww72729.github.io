@@ -20,6 +20,29 @@
   @include transition(all .1s ease-in-out);
 }
 
+.post-category {
+  display: inline-block;
+  background: rgba($theme-color, 0.15);
+  padding: 0 .5rem;
+  margin-right: .5rem;
+  border-radius: 4px;
+  color: $theme-color;
+  font-family: $font-sans;
+  font-size: 90%;
+  &:before {
+    content: "\f24d";
+    font-family: $font-font-awesome;
+    padding-right: .5em;
+  }
+  &:hover {
+    text-decoration: none;
+    background: $theme-color;
+    color: $white;
+  }
+  @include transition(all .1s ease-in-out);
+}
+
+
 .tags-expo {
   :target:before {
     content:"";

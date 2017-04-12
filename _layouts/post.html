@@ -4,6 +4,7 @@ layout: default
 <h2>{{ page.title }}</h2>
 <span>
   <span class="meta" style="display:inline-block;">{{ page.date | date_to_string }}</span> |
+  {% include category.html %}
   {% include tag.html %}
 </span>
 
