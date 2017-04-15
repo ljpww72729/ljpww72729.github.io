@@ -29,7 +29,7 @@ type: page
       {% for post in site.tags[tag] %}
       <li>
         <time>
-          {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
+          {{ post.date | date_to_string }}.
         </time>
         <a class="title" href="{{ post.url }}">{{ post.title }}</a>
 

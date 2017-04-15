@@ -11,7 +11,7 @@ type: page
     <div class="left">
       <h1>{{page.title}}</h1>
           {% for category in site.categories %}
-    <a href="#{{ category[0] | slugify }}" class="post-category">{{ category[0] }}</a>
+    <a href="#{{ category[0] | slugify }}" class="post-categories">{{ category[0] }}</a>
     {% endfor %}
         <hr>
         <ul>
@@ -22,7 +22,7 @@ type: page
                         {% if post.url %}
                         <li>
                             <time>
-                            {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
+                            {{ post.date | date_to_string }}.
                             </time>
                             <a class="title" href="{{ post.url }}">{{ post.title }}</a>
 
