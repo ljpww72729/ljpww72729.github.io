@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "博客语法示例"
 date:   2017-04-09 17:32:27 +0800
 categories:
   - tutorials

@@ -25,7 +25,7 @@ type: page
 
     <ul>
       {% for tag in sortedtags %}
-      <h2 id="{{ tag }}">{{ tag }}</h2>
+      <h2 id="{{ tag | slugify }}">{{ tag }}</h2>
       {% for post in site.tags[tag] %}
       <li>
         <time>
