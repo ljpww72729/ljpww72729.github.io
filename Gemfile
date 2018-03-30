@@ -25,6 +25,9 @@ group :jekyll_plugins do
   gem 'jekyll-compose'
   #  https://github.com/jekyll/jekyll-admin
   gem 'jekyll-admin'
+  gem 'jemoji'
+  gem 'jekyll-sitemap'
+  gem 'jekyll-paginate'
   gem 'jekyll-github-metadata'
   gem 'netrc'
   gem 'github-pages'

@@ -32,6 +32,6 @@
                          {% else %}
                          {% assign color = 8 | minus: base %}
                          {% endif %}
-                         <a href="{{ site.baseurl }}/{{ site.tag_dir }}#{{ tag[0] }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};  padding: 0 .5rem; " onMouseOver="this.style.fontSize='125%'; this.style.textDecoration='none';" onMouseOut="this.style.color='#999'; this.style.fontSize='{{ size }}pt'">{{ tag[0] }}</a>
+                         <a href="{{ site.url }}/{{ site.tag_dir }}#{{ tag[0] }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};  padding: 0 .5rem; " onMouseOver="this.style.fontSize='125%'; this.style.textDecoration='none';" onMouseOut="this.style.color='#999'; this.style.fontSize='{{ size }}pt'">{{ tag[0] }}</a>
                          {% endfor %}
 </div>

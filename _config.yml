@@ -14,11 +14,12 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: 树上刺猬
+content: 李朋的Blog
 email: ljpww72729@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   一带一路.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://ljpww72729.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://ljpww72729.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ljpww72729
 github_username:  ljpww72729
 
@@ -26,19 +27,21 @@ github_username:  ljpww72729
 # Build settings
 markdown: kramdown
 #theme: minima
-gems:
-  - jekyll-feed
-  - jekyll-sitemap
-#  - jekyll-seo-tag
-  - jemoji
-  - jekyll-paginate
-  - jekyll-github-metadata
+# plugins:
+#   - jekyll-feed
+#   - jekyll-sitemap
+# #  - jekyll-seo-tag
+#   - jemoji
+#   - jekyll-paginate
+#   - jekyll-github-metadata
 exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
 
+  # 分页，每页包含博客的条数
 paginate: 10
+# 作者相关信息
 author:
   name:       ljpww72729
   url:        http://ljpww72729.github.io
@@ -53,18 +56,25 @@ defaults:
       comments: true
       author: "李朋"
 
-#设置toc显示的级别,不建议添加1号显示级别
+# kramdown配置说明参见：https://kramdown.gettalong.org/options.html
 kramdown:
+  #设置toc显示的级别,不建议添加1号显示级别
   toc_levels: 2..3
+  # GFM全称Github Flavored Markdown，是github出的markdown语法解析器
+  # 参见：https://kramdown.gettalong.org/parser/gfm.html
   input: GFM
-  syntax_highlighter: rouge
+  syntax_highlighter: rouge     # 语法高亮显示
 
+  # 博客链接格式，此处设置为none，采用/:categories/:title:output_ext该格式
+  # 参见：https://jekyllrb.com/docs/permalinks/
 permalink: none
 
 category_dir: category/
 tag_dir: tag/
 
+# 摘要分隔符 参见：https://jekyllrb.com/docs/posts/#post-excerpts
 excerpt_separator:  '<!-- more -->'
+
 ga_ua: UA-96911884-1
 disqus_name: ljpww72729
 
@@ -73,5 +83,6 @@ sass:
     sass_dir: _sass
     style: :compressed
 
-# Incremental build
+# 开启在内容更新后才build的功能，如果不更新则不build，这是实现性的功能
+# 参见：https://jekyllrb.com/docs/configuration/#build-command-options
 incremental: true
