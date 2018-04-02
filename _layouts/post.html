@@ -1,9 +1,9 @@
 ---
 layout: default
 ---
-<h2>{{ page.title }}</h2>
+<h4>{{ page.title }}</h4>
 <span>
-  <span class="meta" style="display:inline-block;">{{ page.date | date_to_string }}</span> |
+  <span class="meta" style="display:inline-block;">{{ page.date | date:"%Y-%m-%d" }}</span> |
   {% include category.html %}
   {% include tag.html %}
 </span>

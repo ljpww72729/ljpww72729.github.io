@@ -59,11 +59,33 @@ defaults:
 # kramdown配置说明参见：https://kramdown.gettalong.org/options.html
 kramdown:
   #设置toc显示的级别,不建议添加1号显示级别
-  toc_levels: 2..3
+  toc_levels: 4..6
   # GFM全称Github Flavored Markdown，是github出的markdown语法解析器
   # 参见：https://kramdown.gettalong.org/parser/gfm.html
   input: GFM
-  syntax_highlighter: rouge     # 语法高亮显示
+  auto_ids: true
+  #entity_output: as_char
+  #smart_quotes:  lsquo,rsquo,ldquo,rdquo
+  #hard_wrap:    false
+  #footnote_nr:  1
+  #show_warnings: false
+  # 参考：https://stackoverflow.com/questions/38417624/table-of-contents-using-jekyll-and-kramdown
+  parse_block_html: true
+
+  # 显示行号参见：https://github.com/jekyll/jekyll/issues/4619#issuecomment-191267346
+  # 及https://kramdown.gettalong.org/syntax_highlighter/rouge.html
+  syntax_highlighter: rouge
+  # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
+  # span, block element options fall back to global
+  syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: 'highlight'
+    #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
   # 博客链接格式，此处设置为none，采用/:categories/:title:output_ext该格式
   # 参见：https://jekyllrb.com/docs/permalinks/
@@ -71,6 +93,7 @@ permalink: none
 
 category_dir: category/
 tag_dir: tag/
+search_dir: search/
 
 # 摘要分隔符 参见：https://jekyllrb.com/docs/posts/#post-excerpts
 excerpt_separator:  '<!-- more -->'

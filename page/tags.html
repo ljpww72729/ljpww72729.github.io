@@ -8,7 +8,7 @@ type: page
 
 <div class="page clearfix">
   <div class="left">
-    <h1>{{page.title}}</h1>
+    <h4>{{page.title}}</h4>
     {% include tag-random.html %}
     <!--
     {% for tag in site.tags %}
@@ -25,11 +25,11 @@ type: page
 
     <ul>
       {% for tag in sortedtags %}
-      <h2 id="{{ tag | slugify }}">{{ tag }}</h2>
+      <h5 id="{{ tag | slugify }}">{{ tag }}</h5>
       {% for post in site.tags[tag] %}
       <li>
         <time>
-          {{ post.date | date_to_string }}.
+          {{ post.date | date: "%Y-%m-%d" }}.
         </time>
         <a class="title" href="{{ post.url }}">{{ post.title }}</a>
 

@@ -4,22 +4,50 @@ title: {{ site.name }}
 ---
 
 <div id="home">
-  <h1>Blog Posts</h1>
+  <h4>Blog Posts</h4>
 
   <!-- This loops through the paginated posts -->
   {% for post in paginator.posts %}
-  <h2><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h2>
-  <p class="author">
-    <span class="date">{{ post.date | date_to_string}}</span>
-      {% include category.html %}
-      {% include tag.html %}
-  </p>
-  <div class="content">
+
+<div class="demo-card-square mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text"><a style="color: #fff;" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+    <span class="mdl-card__menu" style="float:right;">{{ post.date | date: "%Y-%m-%d"}}</span>
+
+  </div>
+  <div class="mdl-card__supporting-text">
     {{ post.excerpt }}
   </div>
-  <div><a href="{{ site.url }}{{ post.url }}" >Read More</a></div>
-  <div style="width:100%; height:1px; background-color:#F2F2F2;margin:20px auto;padding:0px;overflow:hidden;"></div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  href="{{ site.baseurl }}{{ post.url }}">
+      Read More
+    </a>
+     {% include category.html %}
+      {% include tag.html %}
+  </div>
+</div>
+
+
+  <div style="width:100%; height:0px; background-color:#F2F2F2;margin:10px auto;padding:0px;overflow:hidden;"></div>
+
   {% endfor %}
+
+
+
+  <!-- Square card -->
+<style>
+.demo-card-square.mdl-card {
+  width: 100%;
+  height: auto;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('') bottom right 15% no-repeat #46B6AC;
+}
+</style>
+
+
 
   <!-- Pagination links -->
   <div class="pagination">

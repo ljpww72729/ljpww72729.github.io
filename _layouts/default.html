@@ -3,12 +3,13 @@
   
   {% include head.html %}
 
-  <body>
+  <body style="background-color:#EEEEEF;">
     {% include page-header.html %}
 
-    <section class="main-content">
+     <section class="main-content">
 
-      {{ content }}
+       {{ content }}
+
       {% if page.comments %}
       <div id="disqus_thread"></div>
       <script type="text/javascript">
@@ -34,6 +35,7 @@
     </section>
         {% if site.ga_ua %}
     {% include analytics.html %}
-        {% endif %}
+    {% endif %}
+
   </body>
 </html>

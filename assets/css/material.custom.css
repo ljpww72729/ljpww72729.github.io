@@ -1,0 +1,18 @@
+@charset "UTF-8";
+p{
+    font-size:1.1rem;letter-spacing:0;margin:0 0 16px
+}
+blockquote:before{position:absolute;left:-.5em;content:''}
+blockquote:after{content:'';margin-left:-.05em}
+blockquote{line-height:0;}
+a{color:#4753B1;}
+.main-content table th, .main-content table td{
+    border:1px solid #687a86;
+}
+.highlight table th, .highlight table td{
+    padding:0px;
+    border:0px;
+}
+.highlight pre{
+    border:0px;
+}

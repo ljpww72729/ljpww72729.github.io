@@ -11,15 +11,11 @@ tags:
 
 <!-- more -->
 
+{% include toc.html %}
 
-## Content
-{:.no_toc}
+#### 提示  
 
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
-## 提示  
-
-### 使用资源表达式  
+##### 使用资源表达式  
 可以将dimen相加，如下所示：  
 ```xmln
 android:padding=”@{@dim/textPadding + @dim/headerPadding}
@@ -27,7 +23,7 @@ android:padding=”@{@dim/textPadding + @dim/headerPadding}
 > 可以多次相加，但是在styles中使用无效。
 参考：[Express Yourself]
 
-### NullPointerException
+##### NullPointerException
 data binding表达式在求值时会检查空指针异常，如果为null，并不会提示NullPointerException，而是设置为null。如下所示：
 ```xml
 android:text="@{user.firstName ?? user.userName}"
@@ -55,9 +51,9 @@ public static String capitalize(String str) {
 > </data>
 > ```
 
-### 绑定元素
+##### 绑定元素
 关于绑定元素这部分可参考：[Let’s Flip This Thing]  
-#### Two-way Bindings
+###### Two-way Bindings
 使用databinding绑定视图后，对于视图中元素值的变化，尤其是EditText值的变化，需要variable对象中的值也随之变化，就需要采用`@={}`方式绑定元素值，如下所示：
 ```xml
 <EditText
@@ -66,7 +62,7 @@ public static String capitalize(String str) {
     android:text="@={user.firstName}"/>
 ```
 
-#### View Attributes
+###### View Attributes
 可以在表达式中获取视图的属性，就像是该属性是model的属性一样，如下所示：
 ```xml
 <CheckBox
@@ -82,7 +78,7 @@ public static String capitalize(String str) {
 ```
 > 需要使用id来获取相应组件的属性
 
-#### View References
+###### View References
 在lambda表达式中可以通过视图id来获取该视图的引用：
 ```xml
 <EditText
@@ -96,8 +92,8 @@ public static String capitalize(String str) {
     android:onCheckedChanged="@{()->handler.checked(firstName)}" />
 ```
 
-## 注意事项
-### Included Layouts
+#### 注意事项
+##### Included Layouts
 采用include嵌套布局时，可以为include设置variable，从而在include布局中直接引用variable值，方法参见：
 [Android Data Binding: Adding some variability](https://medium.com/google-developers/android-data-binding-adding-some-variability-1fe001b3abcc)中关于'Included Layouts'部分。其中有一点需要注意：
 ```xml
