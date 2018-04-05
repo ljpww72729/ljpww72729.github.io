@@ -26,17 +26,17 @@
 <div class="mdl-layout__drawer mdl-layout--small-screen-only">
   <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
     {% if site.url %}
-    <a class="mdl-navigation__link is-active" href="{{ site.baseurl }}/">Blog</a>
+    <a id="s_blog" class="mdl-navigation__link is-active" style="text-decoration:none;" href="{{ site.baseurl }}/">Blog</a>
     {% endif %}
     {% if site.category_dir %}
-    <a class="mdl-navigation__link" href="{{ site.baseurl }}/{{ site.category_dir }}">Categories</a>
+    <a id="s_categories" class="mdl-navigation__link" style="text-decoration:none;" href="{{ site.baseurl }}/{{ site.category_dir }}">Categories</a>
     {% endif %}
     {% if site.tag_dir %}
-    <a class="mdl-navigation__link" href="{{ site.baseurl }}/{{ site.tag_dir }}">Tags</a>
+    <a id="s_tags" class="mdl-navigation__link" style="text-decoration:none;" href="{{ site.baseurl }}/{{ site.tag_dir }}">Tags</a>
     {% endif %}
     {% if site.search_dir %}
-    <a class="mdl-navigation__link" href="{{ site.baseurl }}/{{ site.search_dir }}">Search</a>
+    <a id="s_search" class="mdl-navigation__link" style="text-decoration:none;" href="{{ site.baseurl }}/{{ site.search_dir }}">Search</a>
     {% endif %}
-    <a class="mdl-navigation__link" href="{{ site.github.repository_url }}" target="_blank">View on GitHub</a>
+    <a id="s_github" class="mdl-navigation__link" style="text-decoration:none;" href="{{ site.github.repository_url }}" target="_blank">View on GitHub</a>
   </nav>
 </div>
