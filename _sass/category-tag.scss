@@ -1,13 +1,14 @@
 .post-tag {
     display: inline-block;
     background: rgba($theme-color, 0.15);
-    padding: 0 .5rem;
+    padding: 0.2rem .5rem;
     margin-right: .2rem;
     border-radius: 4px;
     color: $theme-color;
     font-family: $font-sans;
     font-weight:300;
     font-size: 90%;
+    line-height: initial;
     &:before {
         content: "\e52d";
         font-family: $font-icons;
@@ -60,13 +61,14 @@
 .post-category {
     display: inline-block;
     background: rgba($theme-color, 0.15);
-    padding: 0 .5rem;
+    padding: 0.2rem .5rem;
     margin-right: .2rem;
     border-radius: 4px;
     color: $theme-color;
     font-family: $font-sans;
     font-weight:300;
     font-size: 90%;
+    line-height: initial;
     &:before {
         content: "\e2c7";
         font-family: $font-icons;
