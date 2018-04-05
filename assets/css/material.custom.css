@@ -7,7 +7,7 @@ blockquote:after{content:'';margin-left:-.05em}
 blockquote{line-height:0;}
 /* a{color:#4753B1;} */
 
-img{
+audio,canvas,iframe,img,svg,video{
     max-width:100%;
     height:auto;
 }
