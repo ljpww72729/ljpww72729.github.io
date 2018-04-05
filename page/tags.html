@@ -5,16 +5,17 @@ permalink: /tag/
 icon: tags
 type: page
 ---
-
-<div class="page clearfix">
-  <div class="left">
-    <h4>{{page.title}}</h4>
+<div class="mdl-grid portfolio-max-width">
+  <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">{{page.title}}</h2>
+    </div>
     {% include tag-random.html %}
     <!--
-    {% for tag in site.tags %}
-    <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
-    {% endfor %}
-    -->
+        {% for tag in site.tags %}
+        <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
+        {% endfor %}
+        -->
     <hr>
     {% capture tags %}
     {% for tag in site.tags %}
@@ -24,20 +25,22 @@ type: page
     {% assign sortedtags = tags | split:' ' | sort %}
 
     <ul>
-      {% for tag in sortedtags %}
-      <h5 id="{{ tag | slugify }}">{{ tag }}</h5>
-      {% for post in site.tags[tag] %}
-      <li>
-        <time>
-          {{ post.date | date: "%Y-%m-%d" }}.
-        </time>
-        <a class="title" href="{{ post.url }}">{{ post.title }}</a>
+      <div class="mdl-grid portfolio-copy">
+        {% for tag in sortedtags %}
+        <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline" id="{{tag | slugify}}">{{tag}}</h3>
+        {% for post in site.tags[tag] %}
+        <li>
+          <time>
+            {{ post.date | date: "%Y-%m-%d" }}.
+          </time>
+          <a class="title" href="{{ post.url }}">{{ post.title }}</a>
 
-        {% include category.html %}
-        {% include tag.html %}
-      </li>
-      {% endfor %}
-      {% endfor %}
+          {% include category.html %}
+          {% include tag.html %}
+        </li>
+        {% endfor %}
+        {% endfor %}
+      </div>
     </ul>
 
   </div>

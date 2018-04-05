@@ -5,14 +5,83 @@ p{
 blockquote:before{position:absolute;left:-.5em;content:''}
 blockquote:after{content:'';margin-left:-.05em}
 blockquote{line-height:0;}
-a{color:#4753B1;}
-.main-content table th, .main-content table td{
-    border:1px solid #687a86;
+/* a{color:#4753B1;} */
+
+img{
+    max-width:100%;
+    height:auto;
 }
+
+/* 以下是设置表格及代码块的样式 */
+table{
+    display:block;
+    width:100%;
+    overflow:auto;
+    word-break:normal;
+    word-break:keep-all;
+    -webkit-overflow-scrolling:touch;
+    line-height:1.5rem;
+}
+table th{
+    font-weight:bold
+}
+table th, table td{
+    padding:0.5rem 1rem;
+    border:1px solid #e9ebec
+}
+/* .main-content table th, .main-content table td{ */
+/*     border:1px solid #687a86; */
+/* } */
 .highlight table th, .highlight table td{
     padding:0px;
     border:0px;
 }
 .highlight pre{
-    border:0px;
+    padding:8px;
+}
+.lineno{
+    background-color:#eee;
+
+}
+
+/* 以下是提示块的样式 */
+blockquote{
+    padding:0 1rem;
+    margin-left:0;
+    color:#819198;
+    border-left:0.3rem solid #dce6f0
+}
+blockquote>:first-child{
+    margin-top:0
+}
+blockquote>:last-child{
+    margin-bottom:0
+}
+
+/* 代码块字体设置 */
+code,kbd,pre,samp{
+    font-family:monospace, monospace;
+    font-size: 1.1rem;
+}
+
+.mdl-navigation__link{
+    color:#424242;
+    text-decoration:none;
+    margin:0;
+    font-size:14px;
+    font-weight:400;
+    line-height:24px;
+    letter-spacing:0;
+    opacity:.87
+}
+h3, h4, h5, h6{
+    color: #000;
+}
+
+
+a{
+    font-size: 16px;
+    color: #5F95F0;
+  text-align: center;
+  font-weight: 300;
 }

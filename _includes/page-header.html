@@ -1,17 +1,42 @@
-<section class="page-header">
-  <h4 class="project-name">{{ site.title | default: site.github.repository_name }}</h4>
-  <h5 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h5>
-  {% if site.url %}
-  <a href="{{ site.baseurl }}/" class="btn">Home</a>
-  {% endif %}
-  {% if site.category_dir %}
-  <a href="{{ site.baseurl }}/{{ site.category_dir }}" class="btn">Categories</a>
-  {% endif %}
-  {% if site.tag_dir %}
-  <a href="{{ site.baseurl }}/{{ site.tag_dir }}" class="btn">Tags</a>
-  {% endif %}
-  {% if site.search_dir %}
-  <a href="{{ site.baseurl }}/{{ site.search_dir }}" class="btn">Search</a>
-  {% endif %}
-  <a href="{{ site.github.repository_url }}" class="btn" target="_blank">View on GitHub</a>
-</section>
+<header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+  <div class="mdl-layout__header-row portfolio-logo-row">
+    <span class="mdl-layout__title">
+      <div class="portfolio-logo"></div>
+      <span class="mdl-layout__title">{{ site.description }}</span>
+    </span>
+  </div>
+  <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+    <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+      {% if site.url %}
+      <a id="blog" class="mdl-navigation__link is-active" href="{{ site.baseurl }}/">Blog</a>
+      {% endif %}
+      {% if site.category_dir %}
+      <a id="categories" class="mdl-navigation__link" href="{{ site.baseurl }}/{{ site.category_dir }}">Categories</a>
+      {% endif %}
+      {% if site.tag_dir %}
+      <a id="tags" class="mdl-navigation__link" href="{{ site.baseurl }}/{{ site.tag_dir }}">Tags</a>
+      {% endif %}
+      {% if site.search_dir %}
+      <a id="search" class="mdl-navigation__link" href="{{ site.baseurl }}/{{ site.search_dir }}">Search</a>
+      {% endif %}
+      <a id="github" class="mdl-navigation__link" href="{{ site.github.repository_url }}" target="_blank">View on GitHub</a>
+    </nav>
+  </div>
+</header>
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+  <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+    {% if site.url %}
+    <a class="mdl-navigation__link is-active" href="{{ site.baseurl }}/">Blog</a>
+    {% endif %}
+    {% if site.category_dir %}
+    <a class="mdl-navigation__link" href="{{ site.baseurl }}/{{ site.category_dir }}">Categories</a>
+    {% endif %}
+    {% if site.tag_dir %}
+    <a class="mdl-navigation__link" href="{{ site.baseurl }}/{{ site.tag_dir }}">Tags</a>
+    {% endif %}
+    {% if site.search_dir %}
+    <a class="mdl-navigation__link" href="{{ site.baseurl }}/{{ site.search_dir }}">Search</a>
+    {% endif %}
+    <a class="mdl-navigation__link" href="{{ site.github.repository_url }}" target="_blank">View on GitHub</a>
+  </nav>
+</div>

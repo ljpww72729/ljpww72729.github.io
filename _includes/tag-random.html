@@ -1,4 +1,4 @@
-<div>
+<div class="mdl-card__supporting-text" style="width:100%;">
   {% assign first = site.tags.first %}
   {% assign max = first[1].size %}
   {% assign min = max %}
@@ -31,7 +31,21 @@
                          {% assign color = 9 | minus: base %}
                          {% else %}
                          {% assign color = 8 | minus: base %}
+
                          {% endif %}
-                         <a href="{{ site.url }}/{{ site.tag_dir }}#{{ tag[0] }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};  padding: 0 .5rem; " onMouseOver="this.style.fontSize='125%'; this.style.textDecoration='none';" onMouseOut="this.style.color='#999'; this.style.fontSize='{{ size }}pt'">{{ tag[0] }}</a>
+
+                         <!-- 参考：https://www.131-studio.com/blogs/shopify-conversion/generate-random-numbers-using-liquid-shopify    因为是静态页面，所以这个随机数在生成页面后就不会再变更了 -->
+
+                         {% assign min = 0 %}
+                         {% assign max = 255 %}
+                         {% assign diff = max | minus: min %}
+                         {% assign colorR = "now" | date: "%N" | modulo: diff | plus: min %}
+                         {% assign colorG = "now" | date: "%N" | modulo: diff | plus: min %}
+                         {% assign colorB = "now" | date: "%N" | modulo: diff | plus: min %}
+
+<div style="margin:.5rem; width:auto; float:left;">
+                           <a href="{{ site.url }}/{{ site.tag_dir }}#{{ tag[0] }}" style="font-size: {{ size }}pt; color: rgb({{ colorR }},{{ colorG }},{{ colorB }}); " onMouseOver="this.style.fontSize='150%'; this.style.textDecoration='none';this.style.color='rgb({% cycle '12','22','72' %},{% cycle '11','23','74' %},{% cycle '95','177','45' %})';" onMouseOut="this.style.color='rgb({{ colorR }},{{ colorG }},{{ colorB }})'; this.style.fontSize='{{ size }}pt'">{{ tag[0] }}
+                           </a>
+</div>
                          {% endfor %}
 </div>

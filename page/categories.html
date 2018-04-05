@@ -5,35 +5,40 @@ permalink: /category/
 icon: th-list
 type: page
 ---
-
-
-<div class="page clearfix">
-    <div class="left">
-      <h4>{{page.title}}</h4>
+  <div class="mdl-grid portfolio-max-width">
+    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">{{page.title}}</h2>
+      </div>
+       <div class="mdl-card__supporting-text" style="width:100%;">
+      {% for category in site.categories %}
+      <a href="#{{ category[0] | slugify }}" class="post-categories">{{ category[0] }}</a>
+      {% endfor %}
+      </div>
+      <hr>
+      <ul>
+        <div class="mdl-grid portfolio-copy">
           {% for category in site.categories %}
-    <a href="#{{ category[0] | slugify }}" class="post-categories">{{ category[0] }}</a>
-    {% endfor %}
-        <hr>
-        <ul>
-            {% for category in site.categories %}
-            <h5 id="{{category | first | slugify}}" style="text-transform:capitalize;">{{category | first}}</h5>
-                {% for posts in category  %}
-                    {% for post in posts %}
-                        {% if post.url %}
-                        <li>
-                            <time>
-                            {{ post.date | date: "%Y-%m-%d" }}.
-                            </time>
-                            <a class="title" href="{{ post.url }}">{{ post.title }}</a>
+          <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline" id="{{category | first | slugify}}" style="text-transform:capitalize;">{{category | first}}</h3>
 
-                            {% include category.html %}
-                            {% include tag.html %}
-                        </li>
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
-            {% endfor %}
-        </ul>
+          {% for posts in category  %}
+          {% for post in posts %}
+          {% if post.url %}
+          <li>
+            <time>
+              {{ post.date | date: "%Y-%m-%d" }}.
+            </time>
+            <a class="title" href="{{ post.url }}">{{ post.title }}</a>
+
+            {% include category.html %}
+            {% include tag.html %}
+          </li>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+          {% endfor %}
+        </div>
+      </ul>
     </div>
-</div>
-<script src="{{ "/assets/js/pageContent.js " | prepend: site.url }}" charset="utf-8"></script>
+  </div>
+<script src="{{ '/assets/js/pageContent.js' | prepend: site.url }}" charset="utf-8"></script>

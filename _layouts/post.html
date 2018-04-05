@@ -1,11 +1,18 @@
 ---
 layout: default
 ---
-<h4>{{ page.title }}</h4>
-<span>
-  <span class="meta" style="display:inline-block;">{{ page.date | date:"%Y-%m-%d" }}</span> |
-  {% include category.html %}
-  {% include tag.html %}
-</span>
-
-{{ content }}
+<div class="mdl-grid portfolio-max-width">
+  <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">{{ page.title }}</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <strong>{{ page.date | date:"%Y-%m-%d" }}</strong>
+      <span> | {% include category.html %}
+        {% include tag.html %}</span>
+    </div>
+    <div class="mdl-grid portfolio-copy" style="display:block;width:100%;">
+      {{ content }}
+    </div>
+  </div>
+</div>

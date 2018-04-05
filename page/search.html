@@ -5,72 +5,79 @@ title: Search
 type: page
 ---
 
-<div style="width:100%">
-  
+
 <!-- Textfield with Floating Label -->
+<div class="mdl-grid portfolio-max-width">
+  <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__supporting-text" style="width:100%;">
+      <form action="#"  style="float:left;width:calc(100% - 36px); margin-right:4px;">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+          <input class="mdl-textfield__input" type="text" id="query"  style="width:100%" onkeypress="if(event.keyCode==13) {searchBut.click();return false;}">
+          <label class="mdl-textfield__label" for="query">正则搜索标题、标签、URL和内容</label>
+        </div>
+      </form>
 
-<form action="#"  style="float:left;width:calc(100% - 36px); margin-right:4px;">
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
-    <input class="mdl-textfield__input" type="text" id="query"  style="width:100%;" onkeypress="if(event.keyCode==13) {searchBut.click();return false;}">
-    <label class="mdl-textfield__label" for="query">正则搜索标题、标签、URL和内容</label>
-  </div>
-</form>
-
-  <div id="searchBut"   onclick="getXMLHttp()" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-    <label class="mdl-button mdl-js-button mdl-button--icon">
-      <i class="material-icons">search</i>
-    </label>
+      <div id="searchBut"   onclick="getXMLHttp()" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+        <label class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">search</i>
+        </label>
+      </div>
+      <div id="result" style="margin-top:30px;"></div>
+    </div>
   </div>
 </div>
 
 
-<div id="result" style="margin-top:30px;"></div>
+
 
 <script type="text/javascript">
-    function startSearch(searchPattern,ajaxResult){
-        var output="";
-        var reg = new RegExp(searchPattern,"im");
-        var dataJson = eval("(" + ajaxResult + ")");    
-        
-        for (var i=0;i<dataJson.length;i++){
-            var title = dataJson[i].title;
-            var tags = dataJson[i].tags;
-            var url = dataJson[i].url;
-            var content = dataJson[i].content;
-            if (reg.test(title+tags+url+content)){
-                var item = '';
-                item = "<h3><a href='"+url+"'>" + title + "</a></h3><p>标签： " + tags + "</p><p>" + content.substr(0,254) + " ...</p>";
-                output += item;
-            }
-        }
-      if (output === ""){
-         var searchPattern = document.getElementById("query").value;
-            output="未搜索到含有 \"" + searchPattern + "\" 关键字的相关博文，请简化搜索内容~";
-        }
-        document.getElementById("result").innerHTML=output;    
-        
+  function startSearch(searchPattern,ajaxResult){
+    var output="";
+    var reg = new RegExp(searchPattern,"im");
+    var dataJson = eval("(" + ajaxResult + ")");    
+    
+    for (var i=0;i<dataJson.length;i++){
+      var title = dataJson[i].title;
+      var category = dataJson[i].category;
+      var tags = dataJson[i].tags;
+      var url = dataJson[i].url;
+      var excerpt = dataJson[i].excerpt;
+      var content = dataJson[i].content;
+      if (reg.test(title+tags+url+content)){
+        var item = '';
+        item = "<div class='mdl-card__supporting-text  mdl-color-text--grey-600' style='border-bottom: 1px solid rgba(0,0,0,0.1); width:100%;'><a href='"+url+"'><strong style='user-select: text;'>" + title + "</strong></a> <div style='margin: .5rem 0;'> <a href='{{ root_url }}/{{ site.category_dir }}#"+ category +"' title='Category: "+ category +"' rel='category' class='post-category'>"+ category+"</a> <a href='{{ site.url }}/{{ site.tag_dir }}#"+ tags+"' title='Tag: "+ tags +"' rel='tag' class = 'post-tag'>"+ tags +"</a></div><p>" + excerpt  + " ...</p></div>";
+        // content.substr(0,254)
+        output += item;
+      }
     }
-    function getXMLHttp(){
-        var searchPattern = "";  
-        searchPattern = document.getElementById("query").value;
-        if (searchPattern === ""){
-            return;
-        }
-        
-        if (window.XMLHttpRequest){
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
-        }else{
-            // code for IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange=function(){
-            if (xmlhttp.readyState==4 && xmlhttp.status==200){
-                startSearch(searchPattern,xmlhttp.responseText);
-            }
-        }
-        xmlhttp.open("GET","/search.json",true);
-        xmlhttp.send();
-        xmlhttp.onerror = function(data){console.log("ajax errrorr")};
+    if (output === ""){
+      var searchPattern = document.getElementById("query").value;
+      output="未搜索到含有 \"" + searchPattern + "\" 关键字的相关博文，请简化搜索内容~";
     }
-</script>
+    document.getElementById("result").innerHTML=output;    
+    
+  }
+function getXMLHttp(){
+  var searchPattern = "";  
+  searchPattern = document.getElementById("query").value;
+  if (searchPattern === ""){
+    return;
+  }
+  
+  if (window.XMLHttpRequest){
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  }else{
+    // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function(){
+    if (xmlhttp.readyState==4 && xmlhttp.status==200){
+      startSearch(searchPattern,xmlhttp.responseText);
+    }
+  }
+  xmlhttp.open("GET","/search.json",true);
+  xmlhttp.send();
+  xmlhttp.onerror = function(data){console.log("ajax errrorr")};
+}
+                    </script>
