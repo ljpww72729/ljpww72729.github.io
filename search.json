@@ -8,7 +8,7 @@ layout: null
       "category" : "{{ post.categories | join: '/' | slugify}}",
       "tags"     : "{{ post.tags | join: ', ' | slugify }}",
       "url"      : "{{ site.baseurl }}{{ post.url }}",
-      "date"     : "{{ post.date }}",
+      "date"     : "{{ post.date | date: '%Y-%m-%d' }}",
       "excerpt"  : "{{ post.excerpt | strip_html | strip_newlines | escape |replace:'\','@@' }}",
       "content"  : "{{ post.content | strip_html | strip_newlines | escape |replace:'\','@@' }}"
     } {% unless forloop.last %},{% endunless %}

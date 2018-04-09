@@ -40,12 +40,13 @@ type: page
       var title = dataJson[i].title;
       var category = dataJson[i].category;
       var tags = dataJson[i].tags;
-      var url = dataJson[i].url;
-      var excerpt = dataJson[i].excerpt;
+                    var url = dataJson[i].url;
+                    var date = dataJson[i].date;
+                         var excerpt = dataJson[i].excerpt;
       var content = dataJson[i].content;
       if (reg.test(title+tags+url+content)){
         var item = '';
-        item = "<div class='mdl-card__supporting-text  mdl-color-text--grey-600' style='border-bottom: 1px solid rgba(0,0,0,0.1); width:100%;'><a href='"+url+"'><strong style='user-select: text;'>" + title + "</strong></a> <div style='margin: .5rem 0;'> <a href='{{ root_url }}/{{ site.category_dir }}#"+ category +"' title='Category: "+ category +"' rel='category' class='post-category'>"+ category+"</a> <a href='{{ site.url }}/{{ site.tag_dir }}#"+ tags+"' title='Tag: "+ tags +"' rel='tag' class = 'post-tag'>"+ tags +"</a></div><p>" + excerpt  + " ...</p></div>";
+        item = "<div class='mdl-card__supporting-text  mdl-color-text--grey-600' style='border-bottom: 1px solid rgba(0,0,0,0.1); width:100%;'><a href='"+url+"'><strong style='user-select: text;'>" + title + "</strong></a> <div style='margin: .5rem 0;'><span> "+ date +" | </span> <a href='{{ root_url }}/{{ site.category_dir }}#"+ category +"' title='Category: "+ category +"' rel='category' class='post-category'>"+ category+"</a> <a href='{{ site.url }}/{{ site.tag_dir }}#"+ tags+"' title='Tag: "+ tags +"' rel='tag' class = 'post-tag'>"+ tags +"</a></div><p>" + excerpt  + " ...</p></div>";
         // content.substr(0,254)
         output += item;
       }

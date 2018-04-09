@@ -108,3 +108,6 @@ sass:
 # 开启在内容更新后才build的功能，如果不更新则不build，这是实现性的功能
 # 参见：https://jekyllrb.com/docs/configuration/#build-command-options
 incremental: true
+
+# 博客图片基础路径
+baseImagePath: /assets/blog/images/
