@@ -33,7 +33,7 @@ Android View的可见性检查方法，该博客引用自UncleChen的博客，�
 
 #### 二、检查View是否可见的基本方法（从外部检查View）
 
-##### 1 View.getVisibility()
+##### 1. View.getVisibility()
 
 很显然，我们可以用`View.getVisibility()`来检查一个它是否处于**View.VISIBLE**状态。这是**最基本**的检查，如果连这个方法得到的返回值都是**View.INVISIBLE或者View.GONE**的话，那么它对用户肯定是不可见的。
 
@@ -72,7 +72,7 @@ Android View的可见性检查方法，该博客引用自UncleChen的博客，�
 
 另外这个方法还在递归的检查过程中，检查了`parentView == null`，也就是说所有的parentView都不能为null。否则就说明这个View根本没有被`addView`过（比如使用Java代码创建界面UI时，可能会先new一个View，然后根据条件动态地把它add带一个ViewGroup中），那肯定是不可能对用户可见的，这里很好理解。
 
-##### 3 View.getGlobalVisibleRect
+##### 3. View.getGlobalVisibleRect
 
 先看下什么是[Rect](https://developer.android.com/reference/android/graphics/Rect.html)：
 
@@ -135,7 +135,7 @@ boolean visibility = bottom.getGlobalVisibleRect(rect);
 
 > tips：这里写代码时测试getGlobalVisibleRect方法时，记得要等View已经绘制完成后，再去调用View的getGlobalVisibleRect方法，否则无法得到的返回值都是0。这和获取View的宽高原理是一样的，如果View没有被绘制完成，那么View.getWidth和View.getHeight一定是等于0的。
 
-####### 关于**getGlobalVisibleRect**方法的特别说明
+###### 关于**getGlobalVisibleRect**方法的特别说明
 
 **这个方法只能检查出这个View在手机屏幕（或者说是相对它的父View）的位置，而不能检查出与其他兄弟View的相对位置**。
 
