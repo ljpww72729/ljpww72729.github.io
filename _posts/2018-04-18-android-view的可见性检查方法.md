@@ -41,7 +41,7 @@ Android View的可见性检查方法，该博客引用自UncleChen的博客，�
 
 这个方法相当于对View的所有祖先调用getVisibility方法。看下它的实现：
 
-```
+```java
     /**
      * Returns the visibility of this view and all of its ancestors
      *
@@ -81,14 +81,14 @@ Rect代表一个矩形，这个矩形可以由它左上角坐标(left, top)、�
 
 使用这个方法的代码非常简单，如下所示，直接可以得到rect对象和方法的返回值visibility：
 
-```
+```java
 Rect rect = new Rect();
 boolean visibility = bottom.getGlobalVisibleRect(rect);
 ```
 
 看一下该方法的注释：当这个View只要有一部分仍然在屏幕中（没有被父View遮挡，所谓的**not clipped by any of its parents**），那么将把没有被遮挡的那部分区域保存在rect对象中返回，且方法的返回值是true，即visibility=true。此时的rect是以手机屏幕作为坐标系（所谓的**global coordinates**），即原点是屏幕左上角；如果它全部被父View遮挡住了或者本身就是不可见的，返回的visibility就为false。
 
-```
+```java
 /**
      * If some part of this view is not clipped by any of its parents, then
      * return that area in r in global (root) coordinates. To convert r to local
@@ -108,7 +108,7 @@ boolean visibility = bottom.getGlobalVisibleRect(rect);
 
 举例子看一下，先看布局：
 
-```
+```xml
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
@@ -143,7 +143,7 @@ boolean visibility = bottom.getGlobalVisibleRect(rect);
 
 空说无凭，看个具体的例子，先看xml：
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -191,7 +191,7 @@ top_view（200x200dp，也在父ViewGroup居中，因此可以完全盖住bottom
 
 先看例子，仍然是使用上面第2个例子的代码，加上下面的代码，执行一下：
 
-```
+```java
 Rect localRect = new Rect();
 boolean localVisibility = bottom.getLocalVisibleRect(localRect);
 ```
@@ -204,7 +204,7 @@ boolean localVisibility = bottom.getLocalVisibleRect(localRect);
 
 **所以只要这个View的左上角在屏幕中，它的LocalVisibleRect的左上角坐标就一定是(0,0)，如果View的右下角在屏幕中，它的LocalVisibleRect右下角坐标就一定是(view.getWidth(), view.getHeight())。**
 
-```
+```java
 public final boolean getLocalVisibleRect(Rect r) {
         final Point offset = mAttachInfo != null ? mAttachInfo.mPoint : new Point();
         if (getGlobalVisibleRect(r, offset)) {
@@ -218,7 +218,7 @@ public final boolean getLocalVisibleRect(Rect r) {
 
 ##### 5. 判断手机屏幕是否熄灭or是否解锁
 
-```
+```java
 PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 boolean isScreenOn = pm.isScreenOn();
 boolean isInteractive = pm.isInteractive();
@@ -237,7 +237,7 @@ boolean isScreenOn = (Boolean) isScreenOnMethod.invoke(pm);
 
 假设我们有一个mView在mScrollView中，我们可以监听mScrollView的滚动，在onScrollChanged中检查mView的可见性。
 
-```
+```java
 mScrollView.getViewTreeObserver().addOnScrollChangedListener(
         new ViewTreeObserver.OnScrollChangedListener() {
 
@@ -265,7 +265,7 @@ mScrollView.getViewTreeObserver().addOnScrollChangedListener(
 
 首先要监听mListView的滚动，接着在onScroll回调中，调用mListView.getFirstVisiblePosition和mListView.getLastVisiblePosition查看第10个位置是否处于可见范围，然后在调用封装好的VisibilityCheckUtil去检查mView是否可见。
 
-```
+```java
 mListView.setOnScrollListener(new OnScrollListener() {
       @Override
       public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -293,7 +293,7 @@ mListView.setOnScrollListener(new OnScrollListener() {
 
 和上面类似，还是把mView摆放在第10个位置，检查原理和ListView类似。
 
-```
+```java
 mLinearLayoutManager = new LinearLayoutManager(this);
 mRecyclerView.setLayoutManager(mLinearLayoutManager);
 mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

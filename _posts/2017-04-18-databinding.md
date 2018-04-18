@@ -2,7 +2,7 @@
 layout: post
 title: "databinding 使用问题总结"
 categories:
-  - Android
+  - android
 tags:
   - databinding
 ---
