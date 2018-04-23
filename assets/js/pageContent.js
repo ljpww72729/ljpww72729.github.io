@@ -3,6 +3,7 @@ var contentParent = document.getElementsByClassName('mdl-layout__content')[0];
 // var layoutHeader = document.getElementsByClassName('mdl-layout__header')[0];
 var layoutContent = document.getElementById('layout_content');
 var layoutFooter = document.getElementsByClassName('mdl-mini-footer')[0];
+
 (function() {
   moveTOC() //将Content内容转移
 
@@ -14,14 +15,29 @@ var layoutFooter = document.getElementsByClassName('mdl-mini-footer')[0];
 
 function handleOnResize(){
 
-    var layoutContentWidth = (contentParent.offsetWidth - content.offsetWidth)/2;
-    if(layoutContentWidth > 250){
-      layoutContent.style.width = layoutContentWidth + "px";
+  // 获取屏幕宽度
+  var windowWidth =  window.innerWidth;
+  console.log("windowWidth==" + windowWidth);
+  if(windowWidth < 1150){
+    // 不显示左侧目录，博客居中显示
+    layoutContent.style.width = "0px";
+    content.style.marginLeft="auto";
+    content.style.margin="auto";
+  }else if(1150 <= windowWidth && windowWidth < 1400){
+    // 左侧目录宽度250px，博客剩余空间显示
+    layoutContent.style.width = "250px";
+    content.style.marginLeft="250px";
       // 设置左侧目录高度，减去footer高度，防止footer遮挡左侧目录
-      layoutContent.style.height = (contentParent.offsetHeight - layoutFooter.offsetHeight) + "px";
-    }else{
-      layoutContent.style.width = "0px";
-    }
+    layoutContent.style.height = (contentParent.offsetHeight - layoutFooter.offsetHeight) + "px";
+  }else{
+    // 显示左侧目录，博客居中显示
+    var layoutContentWidth = (contentParent.offsetWidth - content.offsetWidth)/2;
+    layoutContent.style.width = layoutContentWidth + "px";
+      // 设置左侧目录高度，减去footer高度，防止footer遮挡左侧目录
+    layoutContent.style.height = (contentParent.offsetHeight - layoutFooter.offsetHeight) + "px";
+    content.style.marginLeft="auto";
+    content.style.margin="auto";
+  }
 }
 var tocArray = document.querySelectorAll("h4, h5, h6");
 var lastContentParentHeight = 0;
@@ -85,9 +101,9 @@ function moveTOC() {
 
     var TOCString = document.querySelector('#markdown-toc').innerHTML;
     var contentUl = document.querySelector('#layout_content');
-    var layoutContentWidth = (contentParent.offsetWidth - content.offsetWidth)/2;
+  //  var layoutContentWidth = (contentParent.offsetWidth - content.offsetWidth)/2;
     handleOnResize();
-    if(layoutContentWidth > 250){
+    //if(layoutContentWidth > 250){
 
       contentUl.insertAdjacentHTML('afterbegin', TOCString); //插入字符串
 
@@ -109,9 +125,9 @@ function moveTOC() {
                   aTags[i].setAttribute('data-scroll','');
                 }
 
-            }
-        // }
-    }
+        //  }
+         }
+    // }
 
 
 
