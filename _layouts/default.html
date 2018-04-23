@@ -7,7 +7,7 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       {% include page-header.html %}
       <main class="mdl-layout__content">
-        <div id="layout_content" style="padding:16px 0px 16px 16px;position:fixed;z-index:99;overflow-x: scroll; overflow-y: scroll;" ></div>
+        
         {{ content }}
 
         {% if page.comments %}
@@ -40,18 +40,17 @@ var disqus_url = '{{site.url}}{{site.baseurl}}{{ page.url }}';
       </main>
     </div>
     <script src="{{ site.baseurl }}/assets/js/material.min.js"></script>
-     <script src="{{ site.baseurl }}/assets/js/pageContent.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/pageContent.js"></script>
     <script>
-  var urlString = "{{page.url}}";
-  if(urlString.length > 1 && urlString.lastIndexOf("/") == urlString.length - 1){
-    locateIndicate(urlString);
-  }
+       var urlString = "{{page.url}}";
+       if(urlString.length > 1 && urlString.lastIndexOf("/") == urlString.length - 1){
+       locateIndicate(urlString);
+       }
+       
+       var windowScrollTop =   document.getElementsByClassName('mdl-layout__content')[0];
+       windowScrollTop.removeEventListener('scroll', this.handleScroll); // 删除滚动事件
+       windowScrollTop.addEventListener('scroll', this.handleScroll); // 添加滚动事件
     </script>
     
   </body>
-  <script type="text/javascript">
-  var windowScrollTop =  document.getElementsByClassName('mdl-layout__content')[0];
-    windowScrollTop.removeEventListener('scroll', this.handleScroll); // 删除滚动事件
-     windowScrollTop.addEventListener('scroll', this.handleScroll); // 添加滚动事件
-        </script>
 </html>

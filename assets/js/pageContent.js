@@ -1,28 +1,44 @@
+var content = document.getElementsByClassName('portfolio-max-width')[0];
+var contentParent = document.getElementsByClassName('mdl-layout__content')[0];
+// var layoutHeader = document.getElementsByClassName('mdl-layout__header')[0];
+var layoutContent = document.getElementById('layout_content');
+var layoutFooter = document.getElementsByClassName('mdl-mini-footer')[0];
 (function() {
   moveTOC() //将Content内容转移
 
   window.onresize=function(){
-       var content =  document.getElementsByClassName('portfolio-max-width')[0];
-     var contentParent =  document.getElementsByClassName('mdl-layout__content')[0];
-    var layoutContent = document.getElementById('layout_content');
-        var layoutContentWidth = (contentParent.offsetWidth - content.offsetWidth)/2;
-    if(layoutContentWidth > 250){
-      layoutContent.style.width = layoutContentWidth + "px";
-    }else{
-      layoutContent.style.width = "0px";
-    }
-
+    handleOnResize();
   };
 
 }());
+
+function handleOnResize(){
+
+    var layoutContentWidth = (contentParent.offsetWidth - content.offsetWidth)/2;
+    if(layoutContentWidth > 250){
+      layoutContent.style.width = layoutContentWidth + "px";
+      // 设置左侧目录高度，减去footer高度，防止footer遮挡左侧目录
+      layoutContent.style.height = (contentParent.offsetHeight - layoutFooter.offsetHeight) + "px";
+    }else{
+      layoutContent.style.width = "0px";
+    }
+}
 var tocArray = document.querySelectorAll("h4, h5, h6");
+var lastContentParentHeight = 0;
 
 function handleScroll(e)
-  {
+{
+  // 处理左侧目录高度，根据contentParent高度是否变化来变化左侧目录高度
+    if(contentParent.offsetHeight != lastContentParentHeight){
+       handleOnResize();
+       lastContentParentHeight = contentParent.offsetHeight;
+    }
+
+  // 目录滚动参考：https://yuerblog.cc/2017/12/04/js-toc/
     var i;
-       var topToc = null;
-     var lastToc = topToc;
-     var windowScrollTop =  document.getElementsByClassName('mdl-layout__content')[0].scrollTop;
+    var topToc = null;
+    var lastToc = topToc;
+    var windowScrollTop = contentParent.scrollTop;
 
     for (i = 0; i < tocArray.length; i++) {
       var item = tocArray[i];
@@ -41,7 +57,9 @@ function handleScroll(e)
         console.log("need to active.");
         removeTocActive();
         var id = "markdown-toc-"+topToc.id;
-          document.getElementById(id).classList.add("active");
+        document.getElementById(id).classList.add("active");
+        console.log("topToc.offsetTop==" + topToc.offsetTop);
+        document.getElementById('layout_content').scrollTop = (document.getElementById(id).offsetTop - document.getElementById('layout_content').offsetHeight / 2);
       }
 
     }
@@ -64,18 +82,13 @@ function removeTocActive(){
 //将Content内容转移
 function moveTOC() {
   if (document.querySelector('#markdown-toc') !== null) {
-    var content =  document.getElementsByClassName('portfolio-max-width')[0];
-    console.log(content.offsetWidth);
-    var contentParent =  document.getElementsByClassName('mdl-layout__content')[0];
 
-      var TOCString = document.querySelector('#markdown-toc').innerHTML;
+    var TOCString = document.querySelector('#markdown-toc').innerHTML;
     var contentUl = document.querySelector('#layout_content');
-    console.log("width===")
-    console.log(contentParent.offsetWidth - content.offsetWidth);
-    var layoutContent = document.getElementById('layout_content');
     var layoutContentWidth = (contentParent.offsetWidth - content.offsetWidth)/2;
+    handleOnResize();
     if(layoutContentWidth > 250){
-          layoutContent.style.width = layoutContentWidth + "px";
+
       contentUl.insertAdjacentHTML('afterbegin', TOCString); //插入字符串
 
         // if (!isAndroidWechatBrowser()) {
@@ -99,6 +112,7 @@ function moveTOC() {
             }
         // }
     }
+
 
 
     }
