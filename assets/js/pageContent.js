@@ -45,17 +45,41 @@ function handleOnResize(){
     disqusThread.style.margin="auto";
   }
 }
-var tocArray = document.querySelectorAll("h4, h5, h6");
+var tocArray;
 var lastContentParentHeight = 0;
 
+// 动态设置目录等级
+function setTocLevel(toc_levels){
+//  console.log("toc_levels==" + toc_levels);
+  if(!tocArray){
+    var tocLevels = toc_levels.split("..");
+    var tocString = "";
+    var startLevel = parseInt(tocLevels[0]);
+    while(startLevel <= parseInt(tocLevels[1])){
+      tocString += ",h" + startLevel;
+      startLevel = startLevel + 1;
+    }
+    if(tocString){
+      tocString = tocString.substring(1);
+  //   console.log("tocString===" + tocString);
+      tocArray = document.querySelectorAll(tocString);
+    }
+  }
+}
+
+// 处理滚动事件
 function handleScroll(e)
 {
+
   // 处理左侧目录高度，根据contentParent高度是否变化来变化左侧目录高度
     if(contentParent.offsetHeight != lastContentParentHeight){
        handleOnResize();
        lastContentParentHeight = contentParent.offsetHeight;
     }
 
+  if(!tocArray){
+    return;
+  }
   // 目录滚动参考：https://yuerblog.cc/2017/12/04/js-toc/
     var i;
     var topToc = null;
@@ -74,7 +98,7 @@ function handleScroll(e)
       }
     }
     // todo 这里的逻辑需要优化，不然不停的设置状态
-    if (topToc ) {//&& topToc != lastToc
+    if (topToc) {//&& topToc != lastToc
       if(topToc.id ){//&& (lastToc == null || (lastToc.id && topToc.id != lastToc.id))
         console.log("need to active.");
         removeTocActive();

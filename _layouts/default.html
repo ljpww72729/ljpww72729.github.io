@@ -42,14 +42,15 @@ var disqus_url = '{{site.url}}{{site.baseurl}}{{ page.url }}';
     <script src="{{ site.baseurl }}/assets/js/material.min.js"></script>
     <script src="{{ site.baseurl }}/assets/js/pageContent.js"></script>
     <script>
-       var urlString = "{{page.url}}";
-       if(urlString.length > 1 && urlString.lastIndexOf("/") == urlString.length - 1){
-       locateIndicate(urlString);
-       }
-       
-       var windowScrollTop =   document.getElementsByClassName('mdl-layout__content')[0];
-       windowScrollTop.removeEventListener('scroll', this.handleScroll); // 删除滚动事件
-       windowScrollTop.addEventListener('scroll', this.handleScroll); // 添加滚动事件
+      var urlString = "{{page.url}}";
+      if(urlString.length > 1 && urlString.lastIndexOf("/") == urlString.length - 1){
+        locateIndicate(urlString);
+      }
+
+     var layoutContentScroll =  document.getElementsByClassName('mdl-layout__content')[0];
+     setTocLevel('{{ site.kramdown.toc_levels }}');
+     layoutContentScroll.removeEventListener('scroll', this.handleScroll); // 删除滚动事件
+     layoutContentScroll.addEventListener('scroll', this.handleScroll); // 添加滚动事件
     </script>
     
   </body>
