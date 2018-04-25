@@ -99,15 +99,16 @@ function handleScroll(e)
     }
     // todo 这里的逻辑需要优化，不然不停的设置状态
     if (topToc) {//&& topToc != lastToc
-      if(topToc.id ){//&& (lastToc == null || (lastToc.id && topToc.id != lastToc.id))
+      if(topToc.id){//&& (lastToc == null || (lastToc.id && topToc.id != lastToc.id))
         console.log("need to active.");
         removeTocActive();
         var id = "markdown-toc-"+topToc.id;
+        if(document.getElementById(id)){
         document.getElementById(id).classList.add("active");
         console.log("topToc.offsetTop==" + topToc.offsetTop);
         document.getElementById('layout_content').scrollTop = (document.getElementById(id).offsetTop - document.getElementById('layout_content').offsetHeight / 2);
+        }
       }
-
     }
   }
 
@@ -116,9 +117,11 @@ function removeTocActive(){
   for (i = 0; i < tocArray.length; i++) {
     var item = tocArray[i];
      if(item.id){
-    var id = "markdown-toc-"+item.id;
-     if(document.getElementById(id).classList.contains("active")){
-    document.getElementById(id).classList.remove("active");
+       var id = "markdown-toc-"+item.id;
+       if(document.getElementById(id)){
+         if(document.getElementById(id).classList.contains("active")){
+         document.getElementById(id).classList.remove("active");
+       }
   }
      }
   }

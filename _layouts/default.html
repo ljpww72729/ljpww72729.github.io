@@ -10,29 +10,9 @@
         
         {{ content }}
 
-        {% if page.comments %}
+        {% if page.comments and page.layout == 'post' %}
         <div id="disqus_thread" class="mdl-grid portfolio-max-width"></div>
-        <script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES * * */
-var disqus_shortname = '{{ site.disqus_name }}';
-{% unless page.gamla_disqus_satte %}    
-var disqus_identifier = '{{ page.id | escape }}';
-var disqus_title = '{{ page.title | escape }}';
-var disqus_url = '{{site.url}}{{site.baseurl}}{{ page.url }}';
-{% endunless %}    
-/* * * DON'T EDIT BELOW THIS LINE * * */
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-        {% endif %}
-
-
-        {% if site.ga_ua %}
-        {% include analytics.html %}
+         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
         {% endif %}
 
         {% include page-footer.html %}
@@ -40,18 +20,46 @@ var disqus_url = '{{site.url}}{{site.baseurl}}{{ page.url }}';
       </main>
     </div>
     <script src="{{ site.baseurl }}/assets/js/material.min.js"></script>
+    {% if page.layout == 'post' %}
+    <!-- 只有在博客详情页面才加载该js -->
     <script src="{{ site.baseurl }}/assets/js/pageContent.js"></script>
+    {% endif %}
     <script>
       var urlString = "{{page.url}}";
       if(urlString.length > 1 && urlString.lastIndexOf("/") == urlString.length - 1){
         locateIndicate(urlString);
       }
-
-     var layoutContentScroll =  document.getElementsByClassName('mdl-layout__content')[0];
-     setTocLevel('{{ site.kramdown.toc_levels }}');
-     layoutContentScroll.removeEventListener('scroll', this.handleScroll); // 删除滚动事件
-     layoutContentScroll.addEventListener('scroll', this.handleScroll); // 添加滚动事件
+      var isPost = '{{ page.layout }}';
+      if(isPost == 'post'){
+        // 只有在博客详情页面才执行该js
+        var layoutContentScroll =  document.getElementsByClassName('mdl-layout__content')[0];
+        setTocLevel('{{ site.kramdown.toc_levels }}');
+        layoutContentScroll.removeEventListener('scroll', this.handleScroll); // 删除滚动事件
+        layoutContentScroll.addEventListener('scroll', this.handleScroll); // 添加滚动事件
+      }
     </script>
-    
+      {% if page.comments and page.layout == 'post' %}
+        <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = '{{ site.disqus_name }}';
+          {% unless page.gamla_disqus_satte %}  
+          var disqus_identifier = '{{ page.id | escape }}';
+          var disqus_title = '{{ page.title | escape }}';
+          var disqus_url = '{{site.url}}{{site.baseurl}}{{ page.url }}';
+          {% endunless %}  
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+       
+        {% endif %}
+
+
+        {% if site.ga_ua %}
+        {% include analytics.html %}
+        {% endif %}
   </body>
 </html>

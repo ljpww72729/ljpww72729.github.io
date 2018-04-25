@@ -58,7 +58,7 @@ defaults:
 # kramdown配置说明参见：https://kramdown.gettalong.org/options.html
 kramdown:
   #设置toc显示的级别,不建议添加1号显示级别
-  toc_levels: 4..6
+  toc_levels: 2..4
   # GFM全称Github Flavored Markdown，是github出的markdown语法解析器
   # 参见：https://kramdown.gettalong.org/parser/gfm.html
   input: GFM

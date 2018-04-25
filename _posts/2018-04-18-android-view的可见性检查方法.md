@@ -25,19 +25,19 @@ Android View的可见性检查方法，该博客引用自UncleChen的博客，�
 
 > 原文链接：[Android View的可见性检查方法](http://unclechen.github.io/2016/10/17/Android%20View%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7%E6%A3%80%E6%9F%A5%E6%96%B9%E6%B3%95-%E4%B8%8A%E7%AF%87/)
 
-#### 一、背景
+## 一、背景
 
 在Android开发中有时候会遇到需要检查一个View是不是对用户可见，比如在消息流中，根据ImageView是否在屏幕中出现了再决定加载它，或者当视频滑入屏幕被用户可见时才播放、滑出屏幕就自动停止播放等等。乍一看好像都是在ListView、RecyclerView、ScrollView这些组件里面比较需要做这件事，今天总结一下我在实际开发中是怎么处理View可见性检查的。
 
 <!-- more -->
 
-#### 二、检查View是否可见的基本方法（从外部检查View）
+## 二、检查View是否可见的基本方法（从外部检查View）
 
-##### 1. View.getVisibility()
+### 1. View.getVisibility()
 
 很显然，我们可以用`View.getVisibility()`来检查一个它是否处于**View.VISIBLE**状态。这是**最基本**的检查，如果连这个方法得到的返回值都是**View.INVISIBLE或者View.GONE**的话，那么它对用户肯定是不可见的。
 
-##### 2. View.isShown()
+### 2. View.isShown()
 
 这个方法相当于对View的所有祖先调用getVisibility方法。看下它的实现：
 
@@ -72,7 +72,7 @@ Android View的可见性检查方法，该博客引用自UncleChen的博客，�
 
 另外这个方法还在递归的检查过程中，检查了`parentView == null`，也就是说所有的parentView都不能为null。否则就说明这个View根本没有被`addView`过（比如使用Java代码创建界面UI时，可能会先new一个View，然后根据条件动态地把它add带一个ViewGroup中），那肯定是不可能对用户可见的，这里很好理解。
 
-##### 3. View.getGlobalVisibleRect
+### 3. View.getGlobalVisibleRect
 
 先看下什么是[Rect](https://developer.android.com/reference/android/graphics/Rect.html)：
 
@@ -135,7 +135,7 @@ boolean visibility = bottom.getGlobalVisibleRect(rect);
 
 > tips：这里写代码时测试getGlobalVisibleRect方法时，记得要等View已经绘制完成后，再去调用View的getGlobalVisibleRect方法，否则无法得到的返回值都是0。这和获取View的宽高原理是一样的，如果View没有被绘制完成，那么View.getWidth和View.getHeight一定是等于0的。
 
-###### 关于**getGlobalVisibleRect**方法的特别说明
+#### 关于**getGlobalVisibleRect**方法的特别说明
 
 **这个方法只能检查出这个View在手机屏幕（或者说是相对它的父View）的位置，而不能检查出与其他兄弟View的相对位置**。
 
@@ -185,7 +185,7 @@ top_view（200x200dp，也在父ViewGroup居中，因此可以完全盖住bottom
 
 > PS：有一次我还想到个奇葩思路，那就是把这个View的兄弟View找出来，也拿出它的GlobalVisibleRect，然后对比兄弟View和这个View的GlobalVisibleRect，看是不是有重合的地方。但是这也只能表明屏幕这一块区域内有两个View，还是无法判断到底是谁遮挡住了谁。
 
-##### 4. View.getLocalVisibleRect
+### 4. View.getLocalVisibleRect
 
 这个方法和getGlobalVisibleRect有些类似，也可以拿到这个View在屏幕的可见区域的坐标，**唯一的区别getLocalVisibleRect(rect)获得的rect坐标系的原点是View自己的左上角，而不是屏幕左上角。**
 
@@ -216,7 +216,7 @@ public final boolean getLocalVisibleRect(Rect r) {
 
 ```
 
-##### 5. 判断手机屏幕是否熄灭or是否解锁
+### 5. 判断手机屏幕是否熄灭or是否解锁
 
 ```java
 PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
@@ -229,11 +229,11 @@ boolean isScreenOn = (Boolean) isScreenOnMethod.invoke(pm);
 
 这里不深究解锁和屏幕是否熄灭的实现方法了，检查View的可见性虽然和屏幕的状态看起来没有直接关系，但是在做检查前先对屏幕的状态做一个检查也是很有必要的，如果屏幕都已经关闭了，那这个View当然是对用户不可见的。
 
-#### 三、ListView、RecyclerView、ScrollView中如何检查View的可见性
+## 三、ListView、RecyclerView、ScrollView中如何检查View的可见性
 
 说实话感觉App开发中用得最多的就是各种列表啊、滚动滑动的View。在Android里面这几个可以滚动的View，都有着各自的特点。在用到上面的检测方法时，可以好好结合这几个View的特点，在它们各自的滚动过程中，更加有效的去检查View的可见性。我们可以先根据自己的业务需要，把上面提到的方法封装成一个`VisibilityCheckUtil`工具类，例如可以提供一个check方法，当View的物理面积有50%可见时，就返回true。
 
-##### 1. ScrollView
+### 1. ScrollView
 
 假设我们有一个mView在mScrollView中，我们可以监听mScrollView的滚动，在onScrollChanged中检查mView的可见性。
 
@@ -259,7 +259,7 @@ mScrollView.getViewTreeObserver().addOnScrollChangedListener(
 
 ```
 
-##### 2. ListView 
+### 2. ListView 
 
 假设我们在mListView的第10个位置（界面上是第11个item）有一个需要检查可见性的mView。
 
@@ -289,7 +289,7 @@ mListView.setOnScrollListener(new OnScrollListener() {
     });
 ```
 
-##### 3. RecyclerView
+### 3. RecyclerView
 
 和上面类似，还是把mView摆放在第10个位置，检查原理和ListView类似。
 
@@ -318,7 +318,7 @@ mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
 实际的开发中肯定会遇到更多的场景，我们都要先分析界面的特点，再结合前面提到的几个方法，更有效地检查View的可见性。这里最后再给大家推荐一个开源的项目——[VideoPlayerManager](https://github.com/danylovolokh/VideoPlayerManager)，里面就用到`getLocalVisibleRect`来检测View的可见面积，进而控制在ListView和RecyclerView中哪一个Item应该显示什么内容。
 
-#### 四、小结
+## 四、小结
 
 本篇博客的思路，都是从View的外部去检查一个View的可见性。首先提到了一些基本的方法，然后介绍了几种常见的界面下可以怎么使用这些各种方法。
 

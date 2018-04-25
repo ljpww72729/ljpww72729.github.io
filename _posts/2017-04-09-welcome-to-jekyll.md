@@ -18,14 +18,20 @@ Jekyll kramdown 语法示例
 
 {% include toc.html %}
 
-#### 示例
-##### 显示图片：   
+<!-- 设置图片公共地址 -->
+{% assign tempPath = site.baseImagePath %}
+{% assign tempDate = page.date | date:"%Y%m" %}
+{% assign tempDay = page.date | date:"%d" %}
+{% assign imagePath = tempPath | append: tempDate | append: "/" | append: tempDay | append: "-" | append: page.tags[0] | append: "-" %}
+
+## 示例
+### 显示图片：     
 ```
 [![显示图片](/assets/blog/images/201704/logo.jpg "image description")*My caption*][personal blog]
 ```
 [![显示图片](/assets/blog/images/201704/logo.jpg "image description")*My caption*][personal blog]
 
-##### 显示视频：   
+### 显示视频：     
 ```
 <figure class="video_container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7V-fIGMDsmE" frameborder="0" allowfullscreen></iframe>
@@ -35,7 +41,7 @@ Jekyll kramdown 语法示例
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7V-fIGMDsmE" frameborder="0" allowfullscreen></iframe>
 </figure>
 
-##### 显示本地视频：  
+### 显示本地视频：    
 ```
 <figure class="video_container">
   <video controls="true" allowfullscreen="true" poster="/assets/blog/images/201704/logo.jpg">
@@ -49,7 +55,7 @@ Jekyll kramdown 语法示例
   </video>
 </figure>
 
-##### 显示表格：  
+### 显示表格：    
 ```
 | Default aligned | Left aligned | Center aligned  | Right aligned  |
 |-----------------|:-------------|:---------------:|---------------:|
@@ -74,7 +80,7 @@ Jekyll kramdown 语法示例
 |-----------------+--------------+-----------------+----------------|
 | Third body      |              |                 | Foo            |
 
-##### 显示blockquote  
+### 显示blockquote    
 ```
 > This is a blockquote.
 >     On multiple lines.
@@ -129,10 +135,10 @@ That may be lazy.
 >      end
 > {: .language-ruby}
 
-##### 显示一个Note
+### 显示一个Note
 **Note:** a note is something that needs to be mentioned but is apart from the context.
 
-##### 添加注释：  
+### 添加注释：    
 ```
 This is a paragraph
 {::comment}
@@ -146,7 +152,7 @@ This is a comment which is completely ignored.
 {:/comment}
 ... paragraph continues here.
 
-##### 代码片段显示行号
+### 代码片段显示行号
 {% highlight ruby linenos %}
 def print_hi(name)
   puts "Hi, #{name}"
@@ -183,14 +189,14 @@ kramdown:
       start_line: 1
 ```
 
-##### emoji表情
+### emoji表情
 参考网址：[emoji表情](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
 
 [personal blog]: https://ljpww72729.github.com
 
 I give this plugin two :+1:!  :smirk:
 
-##### 参考文章
+### 参考文章
 [代码高亮的几种选择](https://blog.csdn.net/qiujuer/article/details/50419279)
 > 不过我只使用了默认的语法高亮
 
