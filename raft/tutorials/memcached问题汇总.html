@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  
+  <!-- site.url和site.baseurl引用的是config配置文件中的配置参数 -->
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <meta charset="UTF-8" content="李朋的Blog">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>memcached问题汇总</title>
+  <meta name="description" content="一带一路
+"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+   <meta name="theme-color" content="#157878">
+   <!-- 图标link -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- 引入google分析 -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css"> -->
+  <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+  <script src="/assets/js/pageContent.js" charset="utf-8" type="application/javascript"></script>
+  <!-- material design -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+  <!-- <link rel="stylesheet" href="/assets/css/material.teal-red.min.css" /> -->
+  <!-- <link rel="stylesheet" href="/assets/css/material.custom.css" /> -->
+  <!-- <link rel="stylesheet" href="/assets/css/syntax.css" /> -->
+  <!-- <script defer src="/assets/js/material.min.js"></script> -->
+
+
+
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"> -->
+    <!-- fonts-css是上面css的本地版本 -->
+ <link rel="stylesheet" href="/assets/css/fonts-css.css">
+
+    <link rel="stylesheet" href="/assets/css/material.grey-pink.min.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/material.custom.css" />
+     <script src="/assets/js/material-custom.js" charset="utf-8" type="application/javascript"></script>
+
+</head>
+
+
+  <body style="background-color:#EEEEEF;">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+  <div class="mdl-layout__header-row portfolio-logo-row">
+    <span class="mdl-layout__title">
+      <div class="portfolio-logo"></div>
+      <span class="mdl-layout__title">一带一路
+</span>
+    </span>
+  </div>
+  <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+    <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+      
+      <a id="blog" class="mdl-navigation__link is-active" href="/">Blog</a>
+      
+      
+      <a id="categories" class="mdl-navigation__link" href="/category/">Categories</a>
+      
+      
+      <a id="tags" class="mdl-navigation__link" href="/tag/">Tags</a>
+      
+      
+      <a id="search" class="mdl-navigation__link" href="/search/">Search</a>
+      
+      <a id="github" class="mdl-navigation__link" href="http://github.com/ljpww72729/ljpww72729.github.io" target="_blank">View on GitHub</a>
+    </nav>
+  </div>
+</header>
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+  <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+    
+    <a id="s_blog" class="mdl-navigation__link is-active" style="text-decoration:none;" href="/">Blog</a>
+    
+    
+    <a id="s_categories" class="mdl-navigation__link" style="text-decoration:none;" href="/category/">Categories</a>
+    
+    
+    <a id="s_tags" class="mdl-navigation__link" style="text-decoration:none;" href="/tag/">Tags</a>
+    
+    
+    <a id="s_search" class="mdl-navigation__link" style="text-decoration:none;" href="/search/">Search</a>
+    
+    <a id="s_github" class="mdl-navigation__link" style="text-decoration:none;" href="http://github.com/ljpww72729/ljpww72729.github.io" target="_blank">View on GitHub</a>
+  </nav>
+</div>
+
+      <main class="mdl-layout__content">
+        
+        <div style="width:100%;">
+       <div id="layout_content" style="padding:16px 0px 16px 16px; position:fixed; overflow: scroll;" ></div>
+
+<div class="mdl-grid portfolio-max-width">
+
+   <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+      <h1 class="mdl-card__title-text">memcached问题汇总</h1>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <strong>2018-04-24</strong>
+      <span> | 
+
+<a href="/category/#tutorials" title="Category: tutorials" rel="category" class="post-category">tutorials</a>
+
+
+
+        
+
+<!--a href="/tag/#memcached" title="Tag: memcached" rel="tag">memcached</a-->
+  <a href="https://ljpww72729.github.io/tag/#memcached" title="Tag: memcached" rel="tag" class = "post-tag">memcached</a>
+
+
+</span>
+    </div>
+    <div class="mdl-grid portfolio-copy" style="display:block;width:100%;">
+      <!-- 这里显示的是摘要信息也是概要信息 -->
+
+<p>Jekyll kramdown 语法示例</p>
+
+<!-- more -->
+
+<nav style="z-index:9999;">
+  <h3>目录</h3>
+<ul id="markdown-toc">
+  <li><a href="#安装" id="markdown-toc-安装">安装</a>    <ul>
+      <li><a href="#安装问题及解决办法" id="markdown-toc-安装问题及解决办法">安装问题及解决办法：</a>        <ul>
+          <li><a href="#1-memcached-no-acceptable-c-compiler-found-in-path" id="markdown-toc-1-memcached-no-acceptable-c-compiler-found-in-path">1. memcached no acceptable C compiler found in $PATH</a></li>
+          <li><a href="#2-cant-run-as-root-without-the--u-switch" id="markdown-toc-2-cant-run-as-root-without-the--u-switch">2. can’t run as root without the -u switch</a></li>
+          <li><a href="#3-telnet-command-not-found" id="markdown-toc-3-telnet-command-not-found">3. telnet: command not found</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#参数说明" id="markdown-toc-参数说明">参数说明</a>    <ul>
+      <li><a href="#stats" id="markdown-toc-stats">stats</a></li>
+    </ul>
+  </li>
+</ul>
+
+</nav>
+
+<!-- 设置图片公共地址 -->
+
+<h2 id="安装">安装</h2>
+<p>安装参考：<br />
+<a href="https://blog.csdn.net/luanlouis/article/details/42425105">高性能缓存库Memcached 基础教程</a><br />
+<a href="https://github.com/memcached/memcached/wiki/Install">官方安装指南</a></p>
+
+<h3 id="安装问题及解决办法">安装问题及解决办法：</h3>
+<h4 id="1-memcached-no-acceptable-c-compiler-found-in-path">1. memcached no acceptable C compiler found in $PATH</h4>
+<p>安装gcc:</p>
+
+<blockquote>
+  <p>yum install gcc</p>
+</blockquote>
+
+<p>参考：https://stackoverflow.com/questions/22067913/when-installing-memcached-i-receive-configure-error-no-acceptable-c-compiler</p>
+
+<h4 id="2-cant-run-as-root-without-the--u-switch">2. can’t run as root without the -u switch</h4>
+<p>在执行 <code class="highlighter-rouge">memcached -d -p 11211 -m 256</code> 时会报以上错误。
+说明：如果没有带 -u root 的话就会报：
+can’t run as root without the -u switch
+解决：带-u root就行！</p>
+
+<blockquote>
+  <p>memcached -u root -d -p 11211 -m 256</p>
+</blockquote>
+
+<p>参考：https://blog.csdn.net/e_wsq/article/details/20082307</p>
+
+<h4 id="3-telnet-command-not-found">3. telnet: command not found</h4>
+<p>安装telnet:</p>
+<blockquote>
+  <p>yum list telnet*              列出telnet相关的安装包<br />
+ yum install telnet-server           安装telnet服务<br />
+ yum install telnet.*            安装telnet客户端</p>
+</blockquote>
+
+<h2 id="参数说明">参数说明</h2>
+<h3 id="stats">stats</h3>
+<p>stats 是statistics单词的拼写，即统计的意思。该指令攻击当前memcached服务的各种指标。这些指标跟memcached 的性能和工作状况紧密相关。<br />
+摘自：https://blog.csdn.net/luanlouis/article/details/42425105
+<img src="/assets/blog/images/201804/24-memcached-01.png" alt="" />
+可通过本机远程获取该stats状态，使用如下命令：</p>
+<blockquote>
+  <p>echo stats | nc 192.168.1.123 11211</p>
+</blockquote>
+
+
+    </div>
+   </div>
+   </div>
+</div>
+
+
+        
+        <div id="disqus_thread" class="mdl-grid portfolio-max-width"></div>
+         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+
+        <footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">树上刺猬</div>
+  </div>
+  <div class="mdl-mini-footer__right-section">
+    <ul class="mdl-mini-footer__link-list">
+      <li><a href="https://ljpww72729.github.io">树上刺猬</a> is maintained by <a href="http://ljpww72729.github.io">ljpww72729</a></li>
+      <li>This page was generated by <a href="https://pages.github.com">GitHub Pages</a></li>
+    </ul>
+  </div>
+</footer>
+
+        
+      </main>
+    </div>
+    <script src="/assets/js/material.min.js"></script>
+    
+    <!-- 只有在博客详情页面才加载该js -->
+    <script src="/assets/js/pageContent.js"></script>
+    
+    <script>
+      var urlString = "/tutorials/memcached%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html";
+      if(urlString.length > 1 && urlString.lastIndexOf("/") == urlString.length - 1){
+        locateIndicate(urlString);
+      }
+      var isPost = 'post';
+      if(isPost == 'post'){
+        // 只有在博客详情页面才执行该js
+        var layoutContentScroll =  document.getElementsByClassName('mdl-layout__content')[0];
+        setTocLevel('2..4');
+        layoutContentScroll.removeEventListener('scroll', this.handleScroll); // 删除滚动事件
+        layoutContentScroll.addEventListener('scroll', this.handleScroll); // 添加滚动事件
+      }
+    </script>
+      
+        <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = 'ljpww72729';
+            
+          var disqus_identifier = '/tutorials/memcached问题汇总';
+          var disqus_title = 'memcached问题汇总';
+          var disqus_url = 'https://ljpww72729.github.io/tutorials/memcached%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html';
+            
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+       
+        
+
+
+        
+        <script type="application/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96911884-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+        
+  </body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  
+  <!-- site.url和site.baseurl引用的是config配置文件中的配置参数 -->
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <meta charset="UTF-8" content="李朋的Blog">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>databinding 使用问题总结</title>
+  <meta name="description" content="一带一路
+"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+   <meta name="theme-color" content="#157878">
+   <!-- 图标link -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- 引入google分析 -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css"> -->
+  <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+  <script src="/assets/js/pageContent.js" charset="utf-8" type="application/javascript"></script>
+  <!-- material design -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+  <!-- <link rel="stylesheet" href="/assets/css/material.teal-red.min.css" /> -->
+  <!-- <link rel="stylesheet" href="/assets/css/material.custom.css" /> -->
+  <!-- <link rel="stylesheet" href="/assets/css/syntax.css" /> -->
+  <!-- <script defer src="/assets/js/material.min.js"></script> -->
+
+
+
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"> -->
+    <!-- fonts-css是上面css的本地版本 -->
+ <link rel="stylesheet" href="/assets/css/fonts-css.css">
+
+    <link rel="stylesheet" href="/assets/css/material.grey-pink.min.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/material.custom.css" />
+     <script src="/assets/js/material-custom.js" charset="utf-8" type="application/javascript"></script>
+
+</head>
+
+
+  <body style="background-color:#EEEEEF;">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+  <div class="mdl-layout__header-row portfolio-logo-row">
+    <span class="mdl-layout__title">
+      <div class="portfolio-logo"></div>
+      <span class="mdl-layout__title">一带一路
+</span>
+    </span>
+  </div>
+  <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+    <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+      
+      <a id="blog" class="mdl-navigation__link is-active" href="/">Blog</a>
+      
+      
+      <a id="categories" class="mdl-navigation__link" href="/category/">Categories</a>
+      
+      
+      <a id="tags" class="mdl-navigation__link" href="/tag/">Tags</a>
+      
+      
+      <a id="search" class="mdl-navigation__link" href="/search/">Search</a>
+      
+      <a id="github" class="mdl-navigation__link" href="http://github.com/ljpww72729/ljpww72729.github.io" target="_blank">View on GitHub</a>
+    </nav>
+  </div>
+</header>
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+  <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+    
+    <a id="s_blog" class="mdl-navigation__link is-active" style="text-decoration:none;" href="/">Blog</a>
+    
+    
+    <a id="s_categories" class="mdl-navigation__link" style="text-decoration:none;" href="/category/">Categories</a>
+    
+    
+    <a id="s_tags" class="mdl-navigation__link" style="text-decoration:none;" href="/tag/">Tags</a>
+    
+    
+    <a id="s_search" class="mdl-navigation__link" style="text-decoration:none;" href="/search/">Search</a>
+    
+    <a id="s_github" class="mdl-navigation__link" style="text-decoration:none;" href="http://github.com/ljpww72729/ljpww72729.github.io" target="_blank">View on GitHub</a>
+  </nav>
+</div>
+
+      <main class="mdl-layout__content">
+        
+        <div style="width:100%;">
+       <div id="layout_content" style="padding:16px 0px 16px 16px; position:fixed; overflow: scroll;" ></div>
+
+<div class="mdl-grid portfolio-max-width">
+
+   <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+      <h1 class="mdl-card__title-text">databinding 使用问题总结</h1>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <strong>2017-04-18</strong>
+      <span> | 
+
+<a href="/category/#android" title="Category: android" rel="category" class="post-category">android</a>
+
+
+
+        
+
+<!--a href="/tag/#databinding" title="Tag: databinding" rel="tag">databinding</a-->
+  <a href="https://ljpww72729.github.io/tag/#databinding" title="Tag: databinding" rel="tag" class = "post-tag">databinding</a>
+
+
+</span>
+    </div>
+    <div class="mdl-grid portfolio-copy" style="display:block;width:100%;">
+      <p>对 Databinding 使用过程中发现的问题的总结。</p>
+
+<!-- more -->
+
+<nav style="z-index:9999;">
+  <h3>目录</h3>
+<ul id="markdown-toc">
+  <li><a href="#提示" id="markdown-toc-提示">提示</a>    <ul>
+      <li><a href="#使用资源表达式" id="markdown-toc-使用资源表达式">使用资源表达式</a></li>
+      <li><a href="#nullpointerexception" id="markdown-toc-nullpointerexception">NullPointerException</a></li>
+      <li><a href="#绑定元素" id="markdown-toc-绑定元素">绑定元素</a>        <ul>
+          <li><a href="#two-way-bindings" id="markdown-toc-two-way-bindings">Two-way Bindings</a></li>
+          <li><a href="#view-attributes" id="markdown-toc-view-attributes">View Attributes</a></li>
+          <li><a href="#view-references" id="markdown-toc-view-references">View References</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#注意事项" id="markdown-toc-注意事项">注意事项</a>    <ul>
+      <li><a href="#included-layouts" id="markdown-toc-included-layouts">Included Layouts</a></li>
+    </ul>
+  </li>
+</ul>
+
+</nav>
+
+<h2 id="提示">提示</h2>
+
+<h3 id="使用资源表达式">使用资源表达式</h3>
+<p>可以将dimen相加，如下所示：</p>
+<pre><code class="language-xmln">android:padding=”@{@dim/textPadding + @dim/headerPadding}
+</code></pre>
+<blockquote>
+  <p>可以多次相加，但是在styles中使用无效。
+参考：<a href="https://medium.com/google-developers/android-data-binding-express-yourself-c931d1f90dfe">Express Yourself</a></p>
+</blockquote>
+
+<h3 id="nullpointerexception">NullPointerException</h3>
+<p>data binding表达式在求值时会检查空指针异常，如果为null，并不会提示NullPointerException，而是设置为null。如下所示：</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>android:text="@{user.firstName ?? user.userName}"
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>结果：text值为<code class="highlighter-rouge">null</code>。<br />
+然而，如果求值表达式是在java代码中，则会产生NullPointerException，如下所示：</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>android:text=”@{com.example.StringUtils.capitalize(user.firstName)}”
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>StringUtils为：</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">capitalize</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">Character</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span> <span class="o">+</span> <span class="n">str</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>结果：产生NullPointerException。</p>
+<blockquote>
+  <p>可通过以下方式引入StringUtils</p>
+  <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;data&gt;</span>
+   <span class="nt">&lt;variable</span>
+       <span class="na">name=</span><span class="s">"user"</span>
+       <span class="na">type=</span><span class="s">"com.example.myapp.model.User"</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;import</span>
+       <span class="na">type=</span><span class="s">"com.example.StringUtils"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/data&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div>  </div>
+</blockquote>
+
+<h3 id="绑定元素">绑定元素</h3>
+<p>关于绑定元素这部分可参考：<a href="https://medium.com/google-developers/android-data-binding-lets-flip-this-thing-dc17792d6c24">Let’s Flip This Thing</a></p>
+<h4 id="two-way-bindings">Two-way Bindings</h4>
+<p>使用databinding绑定视图后，对于视图中元素值的变化，尤其是EditText值的变化，需要variable对象中的值也随之变化，就需要采用<code class="highlighter-rouge">@={}</code>方式绑定元素值，如下所示：</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;EditText</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:text=</span><span class="s">"@={user.firstName}"</span><span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="view-attributes">View Attributes</h4>
+<p>可以在表达式中获取视图的属性，就像是该属性是model的属性一样，如下所示：</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;CheckBox</span>
+    <span class="na">android:id=</span><span class="s">"@+id/showName"</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;TextView</span>
+    <span class="na">android:text=</span><span class="s">"@{user.firstName}"</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:visibility=</span><span class="s">"@{showName.checked ? View.VISIBLE : View.GONE}"</span>
+    <span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<blockquote>
+  <p>需要使用id来获取相应组件的属性</p>
+</blockquote>
+
+<h4 id="view-references">View References</h4>
+<p>在lambda表达式中可以通过视图id来获取该视图的引用：</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;EditText</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:id=</span><span class="s">"@+id/firstName"</span>
+    <span class="na">android:text=</span><span class="s">"@={user.firstName}"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;CheckBox</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:onCheckedChanged=</span><span class="s">"@{()-&gt;handler.checked(firstName)}"</span> <span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="注意事项">注意事项</h2>
+<h3 id="included-layouts">Included Layouts</h3>
+<p>采用include嵌套布局时，可以为include设置variable，从而在include布局中直接引用variable值，方法参见：
+<a href="https://medium.com/google-developers/android-data-binding-adding-some-variability-1fe001b3abcc">Android Data Binding: Adding some variability</a>中关于’Included Layouts’部分。其中有一点需要注意：</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;layout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+        <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data&gt;</span>
+        <span class="nt">&lt;variable</span>
+                <span class="na">name=</span><span class="s">"user"</span>
+                <span class="na">type=</span><span class="s">"com.example.myapp.model.User"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/data&gt;</span>
+    <span class="nt">&lt;LinearLayout</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+            <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ImageView</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:src=</span><span class="s">"@{user.image}"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;include</span>
+                <span class="na">layout=</span><span class="s">"@layout/user_name"</span>
+                <span class="na">app:user=</span><span class="s">"@{user}"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+<span class="nt">&lt;/layout&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>include中<code class="highlighter-rouge">app:user=""</code>的user名称需要与include布局中的variable名称一致，同时使用<code class="highlighter-rouge">驼峰</code>命名法命名，不然会出现找不到set方法的错误。<br />
+正确示例：</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>app:userInfo="@{user}"
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>错误示例：</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>app:user_info="@{user}"
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+    </div>
+   </div>
+   </div>
+</div>
+
+
+        
+        <div id="disqus_thread" class="mdl-grid portfolio-max-width"></div>
+         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+
+        <footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">树上刺猬</div>
+  </div>
+  <div class="mdl-mini-footer__right-section">
+    <ul class="mdl-mini-footer__link-list">
+      <li><a href="https://ljpww72729.github.io">树上刺猬</a> is maintained by <a href="http://ljpww72729.github.io">ljpww72729</a></li>
+      <li>This page was generated by <a href="https://pages.github.com">GitHub Pages</a></li>
+    </ul>
+  </div>
+</footer>
+
+        
+      </main>
+    </div>
+    <script src="/assets/js/material.min.js"></script>
+    
+    <!-- 只有在博客详情页面才加载该js -->
+    <script src="/assets/js/pageContent.js"></script>
+    
+    <script>
+      var urlString = "/android/databinding.html";
+      if(urlString.length > 1 && urlString.lastIndexOf("/") == urlString.length - 1){
+        locateIndicate(urlString);
+      }
+      var isPost = 'post';
+      if(isPost == 'post'){
+        // 只有在博客详情页面才执行该js
+        var layoutContentScroll =  document.getElementsByClassName('mdl-layout__content')[0];
+        setTocLevel('2..4');
+        layoutContentScroll.removeEventListener('scroll', this.handleScroll); // 删除滚动事件
+        layoutContentScroll.addEventListener('scroll', this.handleScroll); // 添加滚动事件
+      }
+    </script>
+      
+        <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = 'ljpww72729';
+            
+          var disqus_identifier = '/android/databinding';
+          var disqus_title = 'databinding 使用问题总结';
+          var disqus_url = 'https://ljpww72729.github.io/android/databinding.html';
+            
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+       
+        
+
+
+        
+        <script type="application/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96911884-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+        
+  </body>
+</html>

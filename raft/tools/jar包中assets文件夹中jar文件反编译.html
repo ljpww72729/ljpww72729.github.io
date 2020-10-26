@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  
+  <!-- site.url和site.baseurl引用的是config配置文件中的配置参数 -->
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <meta charset="UTF-8" content="李朋的Blog">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>jar包中assets文件夹中jar文件反编译</title>
+  <meta name="description" content="一带一路
+"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+   <meta name="theme-color" content="#157878">
+   <!-- 图标link -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- 引入google分析 -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css"> -->
+  <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+  <script src="/assets/js/pageContent.js" charset="utf-8" type="application/javascript"></script>
+  <!-- material design -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+  <!-- <link rel="stylesheet" href="/assets/css/material.teal-red.min.css" /> -->
+  <!-- <link rel="stylesheet" href="/assets/css/material.custom.css" /> -->
+  <!-- <link rel="stylesheet" href="/assets/css/syntax.css" /> -->
+  <!-- <script defer src="/assets/js/material.min.js"></script> -->
+
+
+
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"> -->
+    <!-- fonts-css是上面css的本地版本 -->
+ <link rel="stylesheet" href="/assets/css/fonts-css.css">
+
+    <link rel="stylesheet" href="/assets/css/material.grey-pink.min.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/material.custom.css" />
+     <script src="/assets/js/material-custom.js" charset="utf-8" type="application/javascript"></script>
+
+</head>
+
+
+  <body style="background-color:#EEEEEF;">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+  <div class="mdl-layout__header-row portfolio-logo-row">
+    <span class="mdl-layout__title">
+      <div class="portfolio-logo"></div>
+      <span class="mdl-layout__title">一带一路
+</span>
+    </span>
+  </div>
+  <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+    <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+      
+      <a id="blog" class="mdl-navigation__link is-active" href="/">Blog</a>
+      
+      
+      <a id="categories" class="mdl-navigation__link" href="/category/">Categories</a>
+      
+      
+      <a id="tags" class="mdl-navigation__link" href="/tag/">Tags</a>
+      
+      
+      <a id="search" class="mdl-navigation__link" href="/search/">Search</a>
+      
+      <a id="github" class="mdl-navigation__link" href="http://github.com/ljpww72729/ljpww72729.github.io" target="_blank">View on GitHub</a>
+    </nav>
+  </div>
+</header>
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+  <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+    
+    <a id="s_blog" class="mdl-navigation__link is-active" style="text-decoration:none;" href="/">Blog</a>
+    
+    
+    <a id="s_categories" class="mdl-navigation__link" style="text-decoration:none;" href="/category/">Categories</a>
+    
+    
+    <a id="s_tags" class="mdl-navigation__link" style="text-decoration:none;" href="/tag/">Tags</a>
+    
+    
+    <a id="s_search" class="mdl-navigation__link" style="text-decoration:none;" href="/search/">Search</a>
+    
+    <a id="s_github" class="mdl-navigation__link" style="text-decoration:none;" href="http://github.com/ljpww72729/ljpww72729.github.io" target="_blank">View on GitHub</a>
+  </nav>
+</div>
+
+      <main class="mdl-layout__content">
+        
+        <div style="width:100%;">
+       <div id="layout_content" style="padding:16px 0px 16px 16px; position:fixed; overflow: scroll;" ></div>
+
+<div class="mdl-grid portfolio-max-width">
+
+   <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+      <h1 class="mdl-card__title-text">jar包中assets文件夹中jar文件反编译</h1>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <strong>2018-04-08</strong>
+      <span> | 
+
+<a href="/category/#tools" title="Category: tools" rel="category" class="post-category">tools</a>
+
+
+
+        
+
+<!--a href="/tag/#jar" title="Tag: jar" rel="tag">jar</a-->
+  <a href="https://ljpww72729.github.io/tag/#jar" title="Tag: jar" rel="tag" class = "post-tag">jar</a>
+
+
+</span>
+    </div>
+    <div class="mdl-grid portfolio-copy" style="display:block;width:100%;">
+      <p>第三方jar包中的assets文件夹中包含jar文件，如何获取assets中的jar文件并反编译查看源码逻辑</p>
+
+<!-- more -->
+
+<nav style="z-index:9999;">
+  <h3>目录</h3>
+<ul id="markdown-toc">
+  <li><a href="#获取assets文件夹中的jar文件" id="markdown-toc-获取assets文件夹中的jar文件">获取assets文件夹中的jar文件</a>    <ul>
+      <li><a href="#解压jar文件" id="markdown-toc-解压jar文件">解压jar文件</a></li>
+      <li><a href="#解压assets文件夹中的jar文件" id="markdown-toc-解压assets文件夹中的jar文件">解压assets文件夹中的jar文件</a></li>
+      <li><a href="#反编译classesdex文件" id="markdown-toc-反编译classesdex文件">反编译classes.dex文件</a></li>
+    </ul>
+  </li>
+</ul>
+
+</nav>
+
+<h2 id="获取assets文件夹中的jar文件">获取assets文件夹中的jar文件</h2>
+<h3 id="解压jar文件">解压jar文件</h3>
+<p>jar文件是将相关文件打包压缩并使用jar作为后缀命名，因此想要获取assets文件夹中的jar文件，需要将jar文件直接用压缩解压软件解压，从而获取assets文件夹中的jar文件。解压后的目录如下图所示：
+<img src="/assets/blog/images/201804/08-jar-01.png" alt="" /></p>
+
+<h3 id="解压assets文件夹中的jar文件">解压assets文件夹中的jar文件</h3>
+<p>同样，将assets文件夹中的jar文件解压，获取classes.dex文件，解压后如下图所示：
+<img src="/assets/blog/images/201804/08-jar-02.png" alt="" /></p>
+
+<h3 id="反编译classesdex文件">反编译classes.dex文件</h3>
+<p>使用dex2jar将classes文件反编译成jar文件，然后使用Java Decompiler软件读取jar文件。</p>
+
+    </div>
+   </div>
+   </div>
+</div>
+
+
+        
+        <div id="disqus_thread" class="mdl-grid portfolio-max-width"></div>
+         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+
+        <footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">树上刺猬</div>
+  </div>
+  <div class="mdl-mini-footer__right-section">
+    <ul class="mdl-mini-footer__link-list">
+      <li><a href="https://ljpww72729.github.io">树上刺猬</a> is maintained by <a href="http://ljpww72729.github.io">ljpww72729</a></li>
+      <li>This page was generated by <a href="https://pages.github.com">GitHub Pages</a></li>
+    </ul>
+  </div>
+</footer>
+
+        
+      </main>
+    </div>
+    <script src="/assets/js/material.min.js"></script>
+    
+    <!-- 只有在博客详情页面才加载该js -->
+    <script src="/assets/js/pageContent.js"></script>
+    
+    <script>
+      var urlString = "/tools/jar%E5%8C%85%E4%B8%ADassets%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%ADjar%E6%96%87%E4%BB%B6%E5%8F%8D%E7%BC%96%E8%AF%91.html";
+      if(urlString.length > 1 && urlString.lastIndexOf("/") == urlString.length - 1){
+        locateIndicate(urlString);
+      }
+      var isPost = 'post';
+      if(isPost == 'post'){
+        // 只有在博客详情页面才执行该js
+        var layoutContentScroll =  document.getElementsByClassName('mdl-layout__content')[0];
+        setTocLevel('2..4');
+        layoutContentScroll.removeEventListener('scroll', this.handleScroll); // 删除滚动事件
+        layoutContentScroll.addEventListener('scroll', this.handleScroll); // 添加滚动事件
+      }
+    </script>
+      
+        <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = 'ljpww72729';
+            
+          var disqus_identifier = '/tools/jar包中assets文件夹中jar文件反编译';
+          var disqus_title = 'jar包中assets文件夹中jar文件反编译';
+          var disqus_url = 'https://ljpww72729.github.io/tools/jar%E5%8C%85%E4%B8%ADassets%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%ADjar%E6%96%87%E4%BB%B6%E5%8F%8D%E7%BC%96%E8%AF%91.html';
+            
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+       
+        
+
+
+        
+        <script type="application/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96911884-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+        
+  </body>
+</html>

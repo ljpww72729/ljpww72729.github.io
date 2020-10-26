@@ -24,8 +24,8 @@ Jekyll kramdown 语法示例
 {% assign tempDay = page.date | date:"%d" %}
 {% assign imagePath = tempPath | append: tempDate | append: "/" | append: tempDay | append: "-" | append: page.tags[0] | append: "-" %}
 
-## 示例
-### 显示图片：     
+## 示例  
+### 显示图片：  
 ```
 [![显示图片](/assets/blog/images/201704/logo.jpg "image description")*My caption*][personal blog]
 ```

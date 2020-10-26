@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  
+  <!-- site.url和site.baseurl引用的是config配置文件中的配置参数 -->
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <meta charset="UTF-8" content="李朋的Blog">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>emacs快捷方式.</title>
+  <meta name="description" content="一带一路
+"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+   <meta name="theme-color" content="#157878">
+   <!-- 图标link -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- 引入google分析 -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css"> -->
+  <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+  <script src="/assets/js/pageContent.js" charset="utf-8" type="application/javascript"></script>
+  <!-- material design -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+  <!-- <link rel="stylesheet" href="/assets/css/material.teal-red.min.css" /> -->
+  <!-- <link rel="stylesheet" href="/assets/css/material.custom.css" /> -->
+  <!-- <link rel="stylesheet" href="/assets/css/syntax.css" /> -->
+  <!-- <script defer src="/assets/js/material.min.js"></script> -->
+
+
+
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"> -->
+    <!-- fonts-css是上面css的本地版本 -->
+ <link rel="stylesheet" href="/assets/css/fonts-css.css">
+
+    <link rel="stylesheet" href="/assets/css/material.grey-pink.min.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/material.custom.css" />
+     <script src="/assets/js/material-custom.js" charset="utf-8" type="application/javascript"></script>
+
+</head>
+
+
+  <body style="background-color:#EEEEEF;">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+  <div class="mdl-layout__header-row portfolio-logo-row">
+    <span class="mdl-layout__title">
+      <div class="portfolio-logo"></div>
+      <span class="mdl-layout__title">一带一路
+</span>
+    </span>
+  </div>
+  <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+    <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+      
+      <a id="blog" class="mdl-navigation__link is-active" href="/">Blog</a>
+      
+      
+      <a id="categories" class="mdl-navigation__link" href="/category/">Categories</a>
+      
+      
+      <a id="tags" class="mdl-navigation__link" href="/tag/">Tags</a>
+      
+      
+      <a id="search" class="mdl-navigation__link" href="/search/">Search</a>
+      
+      <a id="github" class="mdl-navigation__link" href="http://github.com/ljpww72729/ljpww72729.github.io" target="_blank">View on GitHub</a>
+    </nav>
+  </div>
+</header>
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+  <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+    
+    <a id="s_blog" class="mdl-navigation__link is-active" style="text-decoration:none;" href="/">Blog</a>
+    
+    
+    <a id="s_categories" class="mdl-navigation__link" style="text-decoration:none;" href="/category/">Categories</a>
+    
+    
+    <a id="s_tags" class="mdl-navigation__link" style="text-decoration:none;" href="/tag/">Tags</a>
+    
+    
+    <a id="s_search" class="mdl-navigation__link" style="text-decoration:none;" href="/search/">Search</a>
+    
+    <a id="s_github" class="mdl-navigation__link" style="text-decoration:none;" href="http://github.com/ljpww72729/ljpww72729.github.io" target="_blank">View on GitHub</a>
+  </nav>
+</div>
+
+      <main class="mdl-layout__content">
+        
+        <div style="width:100%;">
+       <div id="layout_content" style="padding:16px 0px 16px 16px; position:fixed; overflow: scroll;" ></div>
+
+<div class="mdl-grid portfolio-max-width">
+
+   <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+      <h1 class="mdl-card__title-text">emacs快捷方式.</h1>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <strong>2018-04-01</strong>
+      <span> | 
+
+<a href="/category/#tools" title="Category: tools" rel="category" class="post-category">tools</a>
+
+
+
+        
+
+<!--a href="/tag/#emacs" title="Tag: emacs" rel="tag">emacs</a-->
+  <a href="https://ljpww72729.github.io/tag/#emacs" title="Tag: emacs" rel="tag" class = "post-tag">emacs</a>
+
+
+</span>
+    </div>
+    <div class="mdl-grid portfolio-copy" style="display:block;width:100%;">
+      <!-- 这里显示的是摘要信息也是概要信息 -->
+
+<p>emacs快捷方式汇总</p>
+
+<!-- more -->
+
+<nav style="z-index:9999;">
+  <h3>目录</h3>
+<ul id="markdown-toc">
+  <li><a href="#基本快捷方式" id="markdown-toc-基本快捷方式">基本快捷方式</a></li>
+  <li><a href="#窗格" id="markdown-toc-窗格">窗格</a></li>
+  <li><a href="#插入与删除" id="markdown-toc-插入与删除">插入与删除</a></li>
+  <li><a href="#文件" id="markdown-toc-文件">文件</a></li>
+  <li><a href="#缓冲区" id="markdown-toc-缓冲区">缓冲区</a></li>
+  <li><a href="#自动保存auto-save恢复缓存文件" id="markdown-toc-自动保存auto-save恢复缓存文件">自动保存（AUTO SAVE），恢复缓存文件</a></li>
+  <li><a href="#状态栏mode-line" id="markdown-toc-状态栏mode-line">状态栏（MODE LINE）</a></li>
+  <li><a href="#搜索" id="markdown-toc-搜索">搜索</a></li>
+  <li><a href="#多窗格" id="markdown-toc-多窗格">多窗格</a></li>
+  <li><a href="#多窗口" id="markdown-toc-多窗口">多窗口</a></li>
+  <li><a href="#递归编辑" id="markdown-toc-递归编辑">递归编辑</a></li>
+</ul>
+
+</nav>
+
+<h2 id="基本快捷方式">基本快捷方式</h2>
+
+<p>M ： META 键，如果你没有 META、EDIT 或 ALT 键那么就先按 <ESC> 再按对应的键  
+C-x C-c 退出 Emacs  
+C-g  终止一条执行过久的命令，还可以取消数字参数和只输入到一半的命令。  
+C-v     向前移动一屏  
+M-v     向后移动一屏  
+C-l     重绘屏幕，并将光标所在行置于屏幕的中央（注意是 CONTROL-L，不是 CONTROL-1）</ESC></p>
+
+<p>C-f     向右移动一个字符<br />
+C-b     向左移动一个字符<br />
+M-f     向右移动一个词【对中文是移动到下一个标点符号】<br />
+M-b     向左移动一个词【对中文是移动到上一个标点符号】<br />
+C-n     移动到下一行<br />
+C-p     移动到上一行<br />
+C-a     移动到行首<br />
+C-e     移动到行尾<br />
+M-a     移动到句首<br />
+M-e     移动到句尾</p>
+
+<p>“P N B F”四个字母分别代表了四个词，用这四个词记忆这些组合键会更容易：<br />
+P 代表 previous（上一行），N 代表 next（下一行），B 代表 backward（回退），而 F 则代表 forward（前进）。这些组合键今后将与你形影不离。</p>
+
+<p>请注意 C-f 、C-b 和 M-f 、M-b 两对之间的类比关系。通常的惯例是：META 系列组合键用来操作“由语言定义的单位（比如词、句子、段落）”，而 CONTROL系列组合键用来操作“与语言无关的基本单位（比如字符、行等等）”。</p>
+
+<p>M-&lt; （META 小于号，按住shift键）可以将光标移动到所有文字的最开头；<br />
+M-&gt; （META 大于号，按住shift键）可以将光标移动到所有文字的最末尾。<br />
+C-u 8 C-f 会向前移动 8 个字符<br />
+C-u 8 C-v 将文本向下滚动 8 行，而不是8屏</p>
+
+<p>C-h k C-f 查找C-f快捷键的帮助文档（创建一个新的窗口用于显示帮助文档）<br />
+C-x 1   只保留一个窗格（也就是关掉其它所有窗格）<br />
+C-u 0 C-l  将光标所在的行滚动为第一行<br />
+如果你不小心按了一下 <ESC>，你也可以用 C-g 来取消它。  
+【这个说法似乎有问题，因为按照这个按键顺序输入的应该是 C-M-g。  
+  取消 <ESC> 的正确做法是再连按两次 <ESC>。】</ESC></ESC></ESC></p>
+
+<h2 id="窗格">窗格</h2>
+
+<p>有一系列命令是以 CONTROL-x 开始的，这些命令许多都跟“窗格、文件、缓冲区【缓冲区（buffer）会在后文详细介绍】”等等诸如此类的东西有关，其中有些命令可能包含了 2 个、3 个或者 4 个字符。<br />
+C-x 1   只保留一个窗格（也就是关掉其它所有窗格）。<br />
+C-h k C-f  观察当一个新窗格出现时当前窗格（该命令用来显示C-f 命令的帮助文档）是如何缩小的。</p>
+
+<h2 id="插入与删除">插入与删除</h2>
+
+<p>C-u 8 *，这将会插入8个连续的 * 号，重复执行输入字符的命令实际上就是输入多个相同的字符。</p>
+
+<p>&lt;DEL&gt;       删除光标前的一个字符<br />
+C-d          删除光标后的一个字符<br />
+M-&lt;DEL&gt;     移除光标前的一个词<br />
+M-d          移除光标后的一个词<br />
+C-k          移除从光标到“行尾”间的字符<br />
+M-k          移除从光标到“句尾”间的字符</p>
+
+<p>选中某一部分文字：首先把光标移动到你想要移除的区域的一端，然后按 C-&lt;SPC&gt;（&lt;SPC&gt;指空格）【注意，C-&lt;SPC&gt; 往往被中文用户设定成输入法热键，如果这样，C-&lt;SPC&gt; 就被系统拦截而无法传递给 Emacs 了，在这种情况下可以使用C-@。】，然后将光标移动到你准备移除的文字的另一端。这个时候， Emacs 会高亮光标和你按下 C-&lt;SPC&gt; 之间的文本。</p>
+
+<p>C-w 剪切复制光标所在的行<br />
+M-w 复制光标所在的行<br />
+C-y 粘贴<br />
+M-y 连续召回：在用 C-y 召回最近移除的文字之后，紧接着再按 M-y 就可以召回再前一次被移除的内容，再按一次 M-y 又可以召回再上一次的……连续使用 M-y 直到找到你想要召回的东西，然什么也不用做，继续编辑就行了。<br />
+C-/ 撤销</p>
+
+<h2 id="文件">文件</h2>
+<p>C-x C-f 输入文件名创建一个缓冲文件<br />
+ C-x C-f   寻找一个文件<br />
+ C-x C-s   储存这个文件</p>
+
+<h2 id="缓冲区">缓冲区</h2>
+<p>C-x b 显示缓冲区<br />
+ C-x s   保存多个缓冲区</p>
+
+<ul>
+  <li>命令集扩展（EXTENDING THE COMMAND SET）<br />
+ C-x     字符扩展。  C-x 之后输入另一个字符或者组合键。<br />
+ M-x     命令名扩展。M-x 之后输入一个命令名。<br />
+ C-x C-z 最大最小话emacs<br />
+C-x C-b         列出缓冲区。<br />
+C-x C-c         离开 Emacs。<br />
+C-x 1           关掉其它所有窗格，只保留一个。<br />
+C-x u           撤销，以一种git log的简单方式显示当前文档的修改历史，可以回撤到自己想要的文件内容！！<br />
+替换：replace-string（字符串替换）这个命令，它会把一个字符串替换成另一个。在输入 M-x 之后，Emacs 会在屏幕底端向你询问并等待你输入命令名。如你想输入“replace-string”，其实只需要敲“repl s&lt;TAB&gt;”就行了，Emacs 会帮你自动补齐。输入完之后按 &lt;Return&gt; 提交。注意！！！！只会替换掉光标之后符合条件的字段。<br />
+ M-% 交互式替换  （暂不清楚如何使用）</li>
+</ul>
+
+<h2 id="自动保存auto-save恢复缓存文件">自动保存（AUTO SAVE），恢复缓存文件</h2>
+<hr />
+<p>如果你已经修改了一个文件，但是还没来得及存盘你的计算机就罢工了，那么你所做的修改就很可能会丢失。为了避免这样的不幸发生，Emacs 会定期将正在编辑的文件写入一个“自动保存”文件中。自动保存文件的文件名的头尾各有一个“#”字符，比如你正在编辑的文件叫“hello.c”，那么它的自动保存文件就叫“#hello.c#”。这个文件会在正常存盘之后被 Emacs 删除。</p>
+
+<p>所以，假如不幸真的发生了，你大可以从容地打开原来的文件（注意不是自动保存文件）然后输入 M-x recover file &lt;Return&gt; 来恢复你的自动保存文件。在提示确认的时候，输入 yes&lt;Return&gt;。</p>
+
+<h2 id="状态栏mode-line">状态栏（MODE LINE）</h2>
+<p>主模式都是可以用 M-x 启动的扩展命令，M-x fundamental-mode 就可以切换到 Fundamental模式。 Fundamental 模式中，M-f 和 M-b 都将单引号视为分隔单词的符号。</p>
+
+<p>M-x text-mode 切换到自然语言文本模式，该模式下，M-f 和 M-b 现在把单引号（’）视为词的一部分。</p>
+
+<p>自动折行模式：<br />
+自动折行（Auto Fill）的辅模式很有用，特别是在编辑自然语言文本的时候。启用自动折行后，Emacs 会在你打字超出一行边界时自动替你换行。<br />
+用 M-x auto-fill-mode &lt;Return&gt; 启动自动折行模式。再用一次这条命令，自动折行模式会被关闭。也就是说，如果自动折行模式没有被开启，这个命令会开启它；如果已经开启了，这个命令会关闭它。所以我们说，这个命令可以用来“开关（toggle）”模式。</p>
+
+<h2 id="搜索">搜索</h2>
+<p>C-s 是向前搜索，C-r 是向后搜索。<br />
+【你会发现 C-g 会让光标回到搜索开始的位置，而 &lt;Return&gt; 则让光标留在搜索结果上，这是很有用的功能。】</p>
+
+<h2 id="多窗格">多窗格</h2>
+<p>C-x 2，它会将屏幕划分成两个窗格。<br />
+C-x o 将光标移回到其他窗格里，C-x o 可以遍历所有窗格。<br />
+查找文件并在一个新的窗格打开：输入 C-x 4 C-f，紧跟着输入一个文件名，再用 &lt;Return&gt; 结束。可以看到你指定的文件出现在下方的窗格中，同时光标也跳到了那里。<br />
+C-x 0	Close current window<br />
+C-x 1	Close all windows except the current one<br />
+C-x 2	Split current window in two vertically<br />
+C-x 3	Split current window in two horizontally<br />
+C-x o	Switch to other window</p>
+
+<h2 id="多窗口">多窗口</h2>
+<p>M-x make-frame &lt;Return&gt;。可以看到一个新的窗口出现在了你的屏幕上。<br />
+ M-x delete-frame &lt;Return&gt;。这个命令将会关闭选中的窗口。<br />
+ C-x 5 0	Close current frame<br />
+ C-x 5 1	Close all frames except the current one<br />
+ C-x 5 2	Create a new frame</p>
+
+<h2 id="递归编辑">递归编辑</h2>
+<p>ESC ESC ESC 离开递归编辑，这是一个最通用的“离开”命令，你甚至可以使用它来关掉多余的窗格，或者离开小缓冲。（赞一个！）你不能用 C-g 退出递归编辑，因为 C-g 的作用是取消“本层递归编辑之内”的命令和其参数（arguments）。</p>
+
+<p>其他快捷方式：</p>
+<ol>
+  <li>格式化代码：<br />
+C-x h：全选<br />
+M-x indent-region</li>
+  <li>在当前行之前加入一空行：C-j</li>
+  <li>在代码后面添加注释：M+;</li>
+  <li>替换光标之后的匹配的字符串（注意按住shift）：M+%</li>
+  <li>多光标<br />
+C-&lt; 光标向上<br />
+C-&gt;或C-+ 光标向下</li>
+  <li>移动光标所在的行向上或向下移动（与mac系统快捷键冲突）<br />
+M-up或者M-down</li>
+  <li>以「括号对」为向前、向后跳转光标<br />
+C-M-p / c-M-n</li>
+  <li>使用键盘宏 kbd-macro录制宏，例如：<br />
+C-x ( start-kbd-macro<br />
+C-n  到下一行<br />
+C-e  移动到行尾<br />
+C-S-b  选中最后一个字符<br />
+C-w  删除之<br />
+C-x )  end-kbd-macro<br />
+以上录制了宏，下面调用录制的宏（也可以将宏录制下来保存为函数）：<br />
+C-x e       执行 1 次刚才录制的宏<br />
+C-u 5 C-x e 执行 5 次刚才录制的宏，当然也可以执行 1000 遍啦<br />
+C-u 0 C-x e 也可以执行到buffer end，即执行无限次</li>
+  <li>输入的lambda转为𝝺字符如何处理？<br />
+M-x prettify-symbols-mode 从而切换是否转换为𝝺<br />
+参见：http://ergoemacs.org/emacs/emacs_pretty_lambda.html</li>
+  <li>从当前光标处换行到下一行<br />
+M-j或者C-j</li>
+  <li>在光标所行下插入一新行<br />
+shift-enter</li>
+</ol>
+
+<p>要使用帮助（Help）功能，请先输入 C-h，然后再输入一个字符以说明你需要什么帮助。如果你连自己到底需要什么帮助都不知道，那么就输入 C-h ?，Emacs会告诉你它能提供了哪些帮助。如果你按了 C-h 又想反悔，可以用 C-g 取消。</p>
+
+<p>快捷键参考：https://aifreedom.com/technology/112</p>
+
+
+    </div>
+   </div>
+   </div>
+</div>
+
+
+        
+        <div id="disqus_thread" class="mdl-grid portfolio-max-width"></div>
+         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        
+
+        <footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">树上刺猬</div>
+  </div>
+  <div class="mdl-mini-footer__right-section">
+    <ul class="mdl-mini-footer__link-list">
+      <li><a href="https://ljpww72729.github.io">树上刺猬</a> is maintained by <a href="http://ljpww72729.github.io">ljpww72729</a></li>
+      <li>This page was generated by <a href="https://pages.github.com">GitHub Pages</a></li>
+    </ul>
+  </div>
+</footer>
+
+        
+      </main>
+    </div>
+    <script src="/assets/js/material.min.js"></script>
+    
+    <!-- 只有在博客详情页面才加载该js -->
+    <script src="/assets/js/pageContent.js"></script>
+    
+    <script>
+      var urlString = "/tools/emacs%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F.html";
+      if(urlString.length > 1 && urlString.lastIndexOf("/") == urlString.length - 1){
+        locateIndicate(urlString);
+      }
+      var isPost = 'post';
+      if(isPost == 'post'){
+        // 只有在博客详情页面才执行该js
+        var layoutContentScroll =  document.getElementsByClassName('mdl-layout__content')[0];
+        setTocLevel('2..4');
+        layoutContentScroll.removeEventListener('scroll', this.handleScroll); // 删除滚动事件
+        layoutContentScroll.addEventListener('scroll', this.handleScroll); // 添加滚动事件
+      }
+    </script>
+      
+        <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = 'ljpww72729';
+            
+          var disqus_identifier = '/tools/emacs快捷方式';
+          var disqus_title = 'emacs快捷方式.';
+          var disqus_url = 'https://ljpww72729.github.io/tools/emacs%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F.html';
+            
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+       
+        
+
+
+        
+        <script type="application/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96911884-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+        
+  </body>
+</html>

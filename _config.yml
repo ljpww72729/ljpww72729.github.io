@@ -17,7 +17,7 @@ title: 树上刺猬
 content: 李朋的Blog
 email: ljpww72729@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  一带一路
+  个人开发技术文档
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ljpww72729.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ljpww72729

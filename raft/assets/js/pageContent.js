@@ -3,9 +3,7 @@ var contentParent = document.getElementsByClassName('mdl-layout__content')[0];
 // var layoutHeader = document.getElementsByClassName('mdl-layout__header')[0];
 var layoutContent = document.getElementById('layout_content');
 var layoutFooter = document.getElementsByClassName('mdl-mini-footer')[0];
- if(document.getElementById('disqus_thread')){
 var disqusThread = document.getElementById('disqus_thread');
- }
 
 (function() {
   moveTOC() //将Content内容转移
@@ -26,17 +24,13 @@ function handleOnResize(){
     layoutContent.style.width = "0px";
     content.style.marginLeft="auto";
     content.style.margin="auto";
-    if(disqusThread){
-      disqusThread.style.marginLeft = "auto";
-      disqusThread.style.margin="auto";
-    }
+    disqusThread.style.marginLeft = "auto";
+    disqusThread.style.margin="auto";
   }else if(1150 <= windowWidth && windowWidth < 1400){
     // 左侧目录宽度250px，博客剩余空间显示
     layoutContent.style.width = "250px";
     content.style.marginLeft="250px";
-     if(disqusThread){
-       disqusThread.style.marginLeft="250px";
-     }
+    disqusThread.style.marginLeft="250px";
       // 设置左侧目录高度，减去footer高度，防止footer遮挡左侧目录
     layoutContent.style.height = (contentParent.offsetHeight - layoutFooter.offsetHeight) + "px";
   }else{
@@ -47,10 +41,8 @@ function handleOnResize(){
     layoutContent.style.height = (contentParent.offsetHeight - layoutFooter.offsetHeight) + "px";
     content.style.marginLeft="auto";
     content.style.margin="auto";
-     if(disqusThread){
-       disqusThread.style.marginLeft="auto";
-       disqusThread.style.margin="auto";
-     }
+    disqusThread.style.marginLeft="auto";
+    disqusThread.style.margin="auto";
   }
 }
 var tocArray;
